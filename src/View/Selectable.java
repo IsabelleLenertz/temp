@@ -1,9 +1,7 @@
 package View;
 
-import java.util.*;
-
 /**
- * 
+ * Displays a selectable object
  */
 public class Selectable {
 

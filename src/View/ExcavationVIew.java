@@ -1,16 +1,17 @@
 package View;
 
-import java.util.*;
+import Control.GameControleur;
 
 /**
- * 
+ * Excavation part's view
  */
-public class ExcavationVIew extends StageView {
+public class ExcavationView extends StageView {
 
     /**
      * Default constructor
      */
-    public ExcavationVIew() {
+    public ExcavationView(GameControleur g)
+    {
+        super(g);
     }
-
 }

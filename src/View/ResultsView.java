@@ -1,9 +1,7 @@
 package View;
 
-import java.util.*;
-
 /**
- * 
+ * The view that displays the results at the end of the game
  */
 public class ResultsView {
 
