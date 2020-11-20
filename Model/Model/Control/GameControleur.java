@@ -1,5 +1,8 @@
 package Control;
 
+import Model.State;
+import View.ToolsInfos;
+
 import java.util.*;
 
 /**
@@ -18,28 +21,28 @@ public class GameControleur {
     /**
      * @param String personName
      */
-    public void highlightPerson(void String personName) {
+    public void highlightPerson(String personName) {
         // TODO implement here
     }
 
     /**
      * @param String excavactionToolName
      */
-    public void highlightExcavationTool(void String excavactionToolName) {
+    public void highlightExcavationTool(String excavactionToolName) {
         // TODO implement here
     }
 
     /**
      * @param String exploitationToolName
      */
-    public void highlightExploitationTool(void String exploitationToolName) {
+    public void highlightExploitationTool(String exploitationToolName) {
         // TODO implement here
     }
 
     /**
      * @param String relicName
      */
-    public void highlightRelic(void String relicName) {
+    public void highlightRelic(String relicName) {
         // TODO implement here
     }
 
@@ -64,15 +67,6 @@ public class GameControleur {
     public State getPersonStatus(String name) {
         // TODO implement here
         return null;
-    }
-
-    /**
-     * @param name 
-     * @return
-     */
-    public String getPersonName(String name) {
-        // TODO implement here
-        return "";
     }
 
     /**
@@ -124,7 +118,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getExcavationToolName(void String name) {
+    public String getExcavationToolName(String name) {
         // TODO implement here
         return "";
     }
@@ -133,7 +127,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getExcavationToolDesc(void String name) {
+    public String getExcavationToolDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -142,7 +136,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public Set<String> getExcavationToolRequirements(void String name) {
+    public Set<String> getExcavationToolRequirements(String name) {
         // TODO implement here
         return null;
     }
@@ -151,7 +145,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public State getExploitationToolStatus(void String name) {
+    public State getExploitationToolStatus(String name) {
         // TODO implement here
         return null;
     }
@@ -160,7 +154,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getExploitationToolName(void String name) {
+    public String getExploitationToolName(String name) {
         // TODO implement here
         return "";
     }
@@ -169,7 +163,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getExploitationToolDesc(void String name) {
+    public String getExploitationToolDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -178,7 +172,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public Set<String> getExploitationToolRequirements(void String name) {
+    public Set<String> getExploitationToolRequirements(String name) {
         // TODO implement here
         return null;
     }
@@ -187,7 +181,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getRelicName(void String name) {
+    public String getRelicName(String name) {
         // TODO implement here
         return "";
     }
@@ -196,7 +190,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getRelicDesc(void String name) {
+    public String getRelicDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -205,7 +199,7 @@ public class GameControleur {
      * @param String name 
      * @return
      */
-    public String getRelicImage(void String name) {
+    public String getRelicImage(String name) {
         // TODO implement here
         return "";
     }
@@ -253,21 +247,21 @@ public class GameControleur {
     /**
      * @param String name
      */
-    public void selectPerson(void String name) {
+    public void selectPerson(String name) {
         // TODO implement here
     }
 
     /**
      * @param String name
      */
-    public void unselectPerson(void String name) {
+    public void unselectPerson(String name) {
         // TODO implement here
     }
 
     /**
      * @param String name
      */
-    public void selectExcavationTool(void String name) {
+    public void selectExcavationTool(String name) {
         // TODO implement here
     }
 
@@ -281,21 +275,21 @@ public class GameControleur {
     /**
      * @param String name
      */
-    public void selectExploitationTool(void String name) {
+    public void selectExploitationTool(String name) {
         // TODO implement here
     }
 
     /**
      * @param String name
      */
-    public void unselectExploitationTool(void String name) {
+    public void unselectExploitationTool(String name) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public SideInfos getSideInfo() {
+    public ToolsInfos.SideInfos getSideInfo() {
         // TODO implement here
         return null;
     }
