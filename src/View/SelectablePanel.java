@@ -1,6 +1,9 @@
 package View;
 
-import java.util.*;
+import Control.GameControleur;
+import Model.*;
+
+import javax.swing.*;
 
 /**
  * 
@@ -14,9 +17,17 @@ public class SelectablePanel {
     }
 
     /**
+     * @param name
+     * @param g
+     */
+    public SelectablePanel(String name, GameControleur g) {
+        this.g = g;
+    }
+
+    /**
      * 
      */
-    public enum state;
+    public State state;
 
     /**
      * 
@@ -27,21 +38,13 @@ public class SelectablePanel {
      * 
      */
     private String name;
-
+    private GameControleur g;
 
 
     /**
      * 
      */
     public void Uptade() {
-        // TODO implement here
-    }
-
-    /**
-     * @param name 
-     * @param g
-     */
-    public void SelectablePanel(String name, GameControleur g) {
         // TODO implement here
     }
 

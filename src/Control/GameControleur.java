@@ -1,7 +1,7 @@
 package Control;
 
 import Model.State;
-import View.ToolsInfos;
+import View.*;
 
 import java.util.*;
 
@@ -19,7 +19,7 @@ public class GameControleur {
 
 
     /**
-     *
+     * ask the model for highlight person
      * @param personName name of the person who want highlight
      */
     public void highlightPerson(String personName) {
@@ -27,6 +27,7 @@ public class GameControleur {
     }
 
     /**
+     * ask the model for highlight excavation tool
      * @param excavactionToolName name of the excavation tool who want the name
      */
     public void highlightExcavationTool(String excavactionToolName) {
@@ -34,7 +35,7 @@ public class GameControleur {
     }
 
     /**
-     *
+     * ask the model for highlight exploitation exploitation tool
      * @param exploitationToolName name of the exploitation tool who want the name
      */
     public void highlightExploitationTool(String exploitationToolName) {
@@ -42,7 +43,7 @@ public class GameControleur {
     }
 
     /**
-     *
+     * ask the model for highlight exploitation exploitation tool
      * @param relicName name of the relic who want highlight
      */
     public void highlightRelic(String relicName) {
@@ -64,7 +65,7 @@ public class GameControleur {
     }
 
     /**
-     *
+     * getter of person
      * @return status of the person
      */
     public State getPersonStatus() {
@@ -73,6 +74,7 @@ public class GameControleur {
     }
 
     /**
+     * getter of person
      * @return name of the person
      */
     public String getPersonName() {
@@ -81,7 +83,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of person
+     * @return description of person
      */
     public String getPersonDesc() {
         // TODO implement here
@@ -89,7 +92,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of person
+     * @return image of person
      */
     public String getPersonImage() {
         // TODO implement here
@@ -97,6 +101,7 @@ public class GameControleur {
     }
 
     /**
+     * getter of person
      * @return
      */
     public Set<String> getPersonJobs() {
@@ -105,7 +110,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of excavation tool
+     * @return excavation tool status
      */
     public State getExcavationToolStatus() {
         // TODO implement here
@@ -283,7 +289,7 @@ public class GameControleur {
     /**
      * @return
      */
-    public ToolsInfos.SideInfos getSideInfo() {
+    public SideInfos getSideInfo() {
         // TODO implement here
         return null;
     }

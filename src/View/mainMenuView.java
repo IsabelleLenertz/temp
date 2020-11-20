@@ -1,5 +1,6 @@
 package View;
 
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -16,6 +17,5 @@ public class mainMenuView {
     /**
      * 
      */
-    public Panel selectionScenario;
-
+    public JPanel selectionScenario;
 }

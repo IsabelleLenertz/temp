@@ -1,7 +1,5 @@
 package View;
 
-import java.util.*;
-
 /**
  * 
  */
@@ -16,6 +14,4 @@ public class TeamSelection extends StageView {
     /**
      * 
      */
-    public void Attribute1;
-
 }

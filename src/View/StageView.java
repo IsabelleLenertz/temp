@@ -1,5 +1,9 @@
 package View;
 
+import Control.GameControleur;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
