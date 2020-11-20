@@ -27,7 +27,4 @@ public class ExcavationTool {
      * 
      */
     private JobEnum requirements;
-
-
-
 }
