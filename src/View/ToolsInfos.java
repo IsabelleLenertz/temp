@@ -3,34 +3,29 @@ package View;
 import java.util.*;
 
 /**
- * 
+ * Displays a tool's information
  */
-public class ToolsInfos extends SideInfos{
+public class ToolsInfos extends SideInfos {
 
     /**
-     * Default constructor
+     * @param name
+     * @param desc
+     * @param Requirement
+     * @param img         Default constructor
      */
-    public ToolsInfos() {
+    public ToolsInfos(String name, String desc, ArrayList<String> Requirement, String img) {
+        super(name, desc);
+        this.requirement = Requirement;
+        this.image = img;
     }
 
     /**
-     * 
+     * Objects needed to discover relics
      */
-    private Set<String> requirement;
+    private ArrayList<String> requirement;
 
     /**
-     * 
+     * Path to the image
      */
     private String image;
-
-    /**
-     * @param name 
-     * @param desc 
-     * @param Requirement 
-     * @param img
-     */
-    public void ToolsInfos(String name, String desc, ArrayList<String> Requirement, String img) {
-        // TODO implement here
-    }
-
-    }
+}

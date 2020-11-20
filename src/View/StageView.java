@@ -1,48 +1,43 @@
 package View;
+import javax.swing.*;
 
 import Control.GameControleur;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-
 /**
- * 
+ * The stage's view
  */
 public abstract class StageView {
 
     /**
+     * @param g
+     *
      * Default constructor
      */
-    public StageView() {
+    public StageView(GameControleur g)
+    {
+        this.g = g;
     }
 
-    /**
-     * 
-     */
-    private Panel ressourcesPanel;
+    private GameControleur g;
 
     /**
-     * 
+     * Displays how many ressources remains
      */
-    private Panel displayInfos;
+    private JPanel ressourcesPanel;
 
     /**
-     * 
+     * Displays informations
      */
-    private Panel panelContaint;
+    private JPanel displayInfos;
 
     /**
-     * 
+     * Displays the main content with all the selectable objects
+     */
+    private JPanel panelContent;
+
+    /**
+     * Button to skip to the next panel
      */
     private JButton buttonNext;
-
-
-    /**
-     * @param g
-     */
-    public void StageView(GameControleur g) {
-        // TODO implement here
-    }
 
 }

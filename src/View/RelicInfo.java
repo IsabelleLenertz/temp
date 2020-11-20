@@ -1,23 +1,23 @@
 package View;
 
 /**
- *
+ * Displays a relic's information
  */
 public class RelicInfo extends SideInfos {
-
-    /**
-     * Default constructor
-     */
-    public RelicInfo() {
-    }
 
     /**
      * @param name
      * @param desc
      * @param img
+     *
+     * Default constructor
      */
-    public void ReliqueInfos(String name, String desc, String img) {
-        // TODO implement here
+    public RelicInfo(String name, String desc, String img)
+    {
+        super(name, desc);
+        this.image = img;
     }
+
+    private String image;
 
 }
