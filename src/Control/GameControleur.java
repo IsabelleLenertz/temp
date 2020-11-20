@@ -20,14 +20,14 @@ public class GameControleur {
 
     /**
      *
-     * @param personName String
+     * @param personName name of the person who want highlight
      */
     public void highlightPerson(String personName) {
         // TODO implement here
     }
 
     /**
-     * @param excavactionToolName String
+     * @param excavactionToolName name of the excavation tool who want the name
      */
     public void highlightExcavationTool(String excavactionToolName) {
         // TODO implement here
@@ -35,7 +35,7 @@ public class GameControleur {
 
     /**
      *
-     * @param exploitationToolName String
+     * @param exploitationToolName name of the exploitation tool who want the name
      */
     public void highlightExploitationTool(String exploitationToolName) {
         // TODO implement here
@@ -43,14 +43,14 @@ public class GameControleur {
 
     /**
      *
-     * @param relicName String
+     * @param relicName name of the relic who want highlight
      */
     public void highlightRelic(String relicName) {
         // TODO implement here
     }
 
     /**
-     * 
+     * remove all the highlight from the interface
      */
     public void clearHighlight() {
         // TODO implement here
@@ -65,10 +65,9 @@ public class GameControleur {
 
     /**
      *
-     * @param name name of the personne who want status
      * @return status of the person
      */
-    public State getPersonStatus(String name) {
+    public State getPersonStatus() {
         // TODO implement here
         return null;
     }
@@ -76,88 +75,87 @@ public class GameControleur {
     /**
      * @return name of the person
      */
-    public String getPersonName(String name) {
+    public String getPersonName() {
         // TODO implement here
         return "";
     }
 
     /**
-     * @param name 
      * @return
      */
-    public String getPersonDesc(String name) {
+    public String getPersonDesc() {
         // TODO implement here
         return "";
     }
 
     /**
-     * @param name 
      * @return
      */
-    public String getPersonImage(String name) {
+    public String getPersonImage() {
         // TODO implement here
         return "";
     }
 
     /**
-     * @param name 
      * @return
      */
-    public Set<String> getPersonJobs(String name) {
+    public Set<String> getPersonJobs() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name 
      * @return
      */
-    public State getExcavationToolStatus(String name) {
+    public State getExcavationToolStatus() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name String
      * @return
      */
-    public String getExcavationToolName(String name) {
+    public String getExcavationToolName() {
         // TODO implement here
         return "";
     }
 
     /**
-     * @param name
      * @return
      */
-    public String getExcavationToolDesc(String name) {
+    public String getExcavationToolDesc() {
         // TODO implement here
         return "";
     }
 
     /**
-     * @param name
      * @return
      */
-    public Set<String> getExcavationToolRequirements(String name) {
+    public Set<String> getExcavationToolRequirements() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name
      * @return
      */
-    public State getExploitationToolStatus(String name) {
+    public State getExploitationToolStatus() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name
      * @return
      */
-    public String getExploitationToolName(String name) {
+    public String getExploitationToolName() {
+        // TODO implement here
+        return "";
+    }
+
+    /**
+     * @return
+     */
+    public String getExploitationToolDesc() {
         // TODO implement here
         return "";
     }
@@ -166,16 +164,7 @@ public class GameControleur {
      * @param name
      * @return
      */
-    public String getExploitationToolDesc(String name) {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param name
-     * @return
-     */
-    public Set<String> getExploitationToolRequirements(String name) {
+    public Set<String> getExploitationToolRequirements() {
         // TODO implement here
         return null;
     }
@@ -184,7 +173,7 @@ public class GameControleur {
      * @param name
      * @return
      */
-    public String getRelicName(String name) {
+    public String getRelicName() {
         // TODO implement here
         return "";
     }
@@ -193,7 +182,7 @@ public class GameControleur {
      * @param name
      * @return
      */
-    public String getRelicDesc(String name) {
+    public String getRelicDesc() {
         // TODO implement here
         return "";
     }
@@ -202,7 +191,7 @@ public class GameControleur {
      * @param name
      * @return
      */
-    public String getRelicImage(String name) {
+    public String getRelicImage() {
         // TODO implement here
         return "";
     }
@@ -255,7 +244,8 @@ public class GameControleur {
     }
 
     /**
-     * @param name
+     * set the status of the person on UNSELECT
+     * @param name name for the person who want unselect
      */
     public void unselectPerson(String name) {
         // TODO implement here
@@ -269,7 +259,8 @@ public class GameControleur {
     }
 
     /**
-     * @param name
+     * set the status of the excavation tool on UNSELECT
+     * @param name name of the excavation tool who want unselect
      */
     public void unselectExcavationTool(String name) {
         // TODO implement here
