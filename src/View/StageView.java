@@ -40,4 +40,11 @@ public abstract class StageView {
      */
     private JButton buttonNext;
 
+    public GameControleur getG() {
+        return g;
+    }
+
+    public void setG(GameControleur g) {
+        this.g = g;
+    }
 }

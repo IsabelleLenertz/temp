@@ -28,4 +28,12 @@ public class ToolsInfos extends SideInfos {
      * Path to the image
      */
     private String image;
+
+    public ArrayList<String> getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(ArrayList<String> requirement) {
+        this.requirement = requirement;
+    }
 }
