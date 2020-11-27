@@ -10,7 +10,8 @@ public class SelectablePersonPanel extends SelectablePanel {
     /**
      * Default constructor
      */
-    public SelectablePersonPanel(String name, GameControleur g) {
+    public SelectablePersonPanel(String name, GameControleur g)
+    {
         super(name, g);
     }
 

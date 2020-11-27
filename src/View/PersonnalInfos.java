@@ -30,4 +30,11 @@ public class PersonnalInfos extends SideInfos {
      */
     private String images;
 
+    public ArrayList<String> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(ArrayList<String> jobs) {
+        this.jobs = jobs;
+    }
 }
