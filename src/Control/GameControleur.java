@@ -68,7 +68,7 @@ public class GameControleur {
      * getter of person
      * @return status of the person
      */
-    public State getPersonStatus() {
+    public State getPersonStatus(String name) {
         // TODO implement here
         return null;
     }
@@ -77,7 +77,7 @@ public class GameControleur {
      * getter of person
      * @return name of the person
      */
-    public String getPersonName() {
+    public String getPersonName(String name) {
         // TODO implement here
         return "";
     }
@@ -86,7 +86,7 @@ public class GameControleur {
      * getter of person
      * @return description of person
      */
-    public String getPersonDesc() {
+    public String getPersonDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -95,7 +95,7 @@ public class GameControleur {
      * getter of person
      * @return image of person
      */
-    public String getPersonImage() {
+    public String getPersonImage(String name) {
         // TODO implement here
         return "";
     }
@@ -104,7 +104,7 @@ public class GameControleur {
      * getter of person
      * @return list of person's jobs
      */
-    public Set<String> getPersonJobs() {
+    public Set<String> getPersonJobs(String name) {
         // TODO implement here
         return null;
     }
@@ -122,7 +122,7 @@ public class GameControleur {
      * getter of excavation tool
      * @return excavation tool name
      */
-    public String getExcavationToolName() {
+    public String getExcavationToolName(String name) {
         // TODO implement here
         return "";
     }
@@ -131,7 +131,7 @@ public class GameControleur {
      * getter of excavation tool
      * @return the excavation tool description
      */
-    public String getExcavationToolDesc() {
+    public String getExcavationToolDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -140,7 +140,7 @@ public class GameControleur {
      * getter of excavation tool
      * @return the requirements for excavation tool
      */
-    public Set<String> getExcavationToolRequirements() {
+    public Set<String> getExcavationToolRequirements(String name) {
         // TODO implement here
         return null;
     }
@@ -149,7 +149,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return the exploitation tool status
      */
-    public State getExploitationToolStatus() {
+    public State getExploitationToolStatus(String name) {
         // TODO implement here
         return null;
     }
@@ -158,7 +158,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return the exploitation tool name
      */
-    public String getExploitationToolName() {
+    public String getExploitationToolName(String name) {
         // TODO implement here
         return "";
     }
@@ -167,7 +167,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return exploitation tool description
      */
-    public String getExploitationToolDesc() {
+    public String getExploitationToolDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -176,7 +176,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return exploitation tool's requirements
      */
-    public ArrayList<String> getExploitationToolRequirements() {
+    public ArrayList<String> getExploitationToolRequirements(String name) {
         // TODO implement here
         return null;
     }
@@ -185,7 +185,7 @@ public class GameControleur {
      * gette of relic
      * @return name of the relic
      */
-    public String getRelicName() {
+    public String getRelicName(String name) {
         // TODO implement here
         return "";
     }
@@ -194,7 +194,7 @@ public class GameControleur {
      * getter of relic
      * @return description of the relic
      */
-    public String getRelicDesc() {
+    public String getRelicDesc(String name) {
         // TODO implement here
         return "";
     }
@@ -203,7 +203,7 @@ public class GameControleur {
      * getter of relic
      * @return relic image
      */
-    public String getRelicImage() {
+    public String getRelicImage(String name) {
         // TODO implement here
         return "";
     }
@@ -212,7 +212,7 @@ public class GameControleur {
      * getter of relic
      * @return list of person in the game
      */
-    public ArrayList<String> getPersonsList() {
+    public ArrayList<String> getPersonsList(String name) {
         // TODO implement here
         return null;
     }
@@ -221,7 +221,7 @@ public class GameControleur {
      * getter of excavation tool
      * @return list of excavation tool in the game
      */
-    public ArrayList<String> getExcavationToolsList() {
+    public ArrayList<String> getExcavationToolsList(String name) {
         // TODO implement here
         return null;
     }
@@ -230,7 +230,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return list of exploitation tool in game
      */
-    public ArrayList<String> getExploitationToolsList() {
+    public ArrayList<String> getExploitationToolsList(String name) {
         // TODO implement here
         return null;
     }
@@ -239,7 +239,7 @@ public class GameControleur {
      * getter of relic
      * @return list of relics found by the player
      */
-    public Set<String> getFoundRelicsList() {
+    public Set<String> getFoundRelicsList(String name) {
         // TODO implement here
         return null;
     }
@@ -248,7 +248,7 @@ public class GameControleur {
      * getter of job
      * @return list of available jobs
      */
-    public ArrayList<String> getAvailableJobs() {
+    public ArrayList<String> getAvailableJobs(String name) {
         // TODO implement here
         return null;
     }
