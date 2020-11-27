@@ -1,8 +1,11 @@
 package Control;
 
+import Model.JobEnum;
+import Model.Person;
 import Model.State;
 import View.*;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -16,14 +19,18 @@ public class GameControleur {
     public GameControleur() {
     }
 
-
-
     /**
      * ask the model for highlight person
      * @param personName name of the person who want highlight
      */
     public void highlightPerson(String personName) {
-        // TODO implement here
+        ArrayList<Person> listp = Person.getListperson();
+        for (Person p : listp) {
+            if (personName.equals(p.getName())) {
+                p.setHighligthed(true);
+                break;
+            }
+        }
     }
 
     /**
@@ -31,7 +38,7 @@ public class GameControleur {
      * @param excavactionToolName name of the excavation tool who want the name
      */
     public void highlightExcavationTool(String excavactionToolName) {
-        // TODO implement here
+
     }
 
     /**
@@ -69,8 +76,15 @@ public class GameControleur {
      * @return status of the person
      */
     public State getPersonStatus(String name) {
-        // TODO implement here
-        return null;
+        ArrayList<Person> listp = Person.getListperson();
+        State s = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                s = p.getStatus();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
@@ -78,8 +92,15 @@ public class GameControleur {
      * @return name of the person
      */
     public String getPersonName(String name) {
-        // TODO implement here
-        return "";
+        ArrayList<Person> listp = Person.getListperson();
+        String s = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                s = p.getName();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
@@ -87,26 +108,47 @@ public class GameControleur {
      * @return description of person
      */
     public String getPersonDesc(String name) {
-        // TODO implement here
-        return "";
+        ArrayList<Person> listp = Person.getListperson();
+        String s = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                s = p.getDesc();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of person
      * @return image of person
      */
-    public String getPersonImage(String name) {
-        // TODO implement here
-        return "";
+    public File getPersonImage(String name) {
+        ArrayList<Person> listp = Person.getListperson();
+        File f = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                f = p.getImg();
+                break;
+            }
+        }
+        return f;
     }
 
     /**
      * getter of person
      * @return list of person's jobs
      */
-    public Set<String> getPersonJobs(String name) {
-        // TODO implement here
-        return null;
+    public JobEnum getPersonJobs(String name) {
+        ArrayList<Person> listp = Person.getListperson();
+        JobEnum jobs = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                jobs = p.getJobs();
+                break;
+            }
+        }
+        return jobs;
     }
 
     /**
@@ -212,8 +254,7 @@ public class GameControleur {
      * getter of relic
      * @return list of person in the game
      */
-    public ArrayList<String> getPersonsList(String name) {
-        // TODO implement here
+    public ArrayList<String> getPersonsList() {
         return null;
     }
 
@@ -258,7 +299,13 @@ public class GameControleur {
      * @param name name of the person who want change status on SELECT
      */
     public void selectPerson(String name) {
-        // TODO implement here
+        ArrayList<Person> listp = Person.getListperson();
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.SELECT);
+                break;
+            }
+        }
     }
 
     /**
@@ -266,7 +313,13 @@ public class GameControleur {
      * @param name name for the person who want unselect
      */
     public void unselectPerson(String name) {
-        // TODO implement here
+        ArrayList<Person> listp = Person.getListperson();
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.UNSELECT);
+                break;
+            }
+        }
     }
 
     /**
