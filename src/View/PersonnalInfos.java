@@ -19,6 +19,8 @@ public class PersonnalInfos extends SideInfos {
         super(name, desc);
         this.jobs = jobs;
         this.images = img;
+
+
     }
     /**
      *  List of the jobs that the character can do
@@ -37,4 +39,6 @@ public class PersonnalInfos extends SideInfos {
     public void setJobs(ArrayList<String> jobs) {
         this.jobs = jobs;
     }
+
+
 }
