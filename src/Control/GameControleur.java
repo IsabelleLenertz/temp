@@ -102,7 +102,7 @@ public class GameControleur {
 
     /**
      * getter of person
-     * @return
+     * @return list of person's jobs
      */
     public Set<String> getPersonJobs() {
         // TODO implement here
@@ -119,7 +119,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of excavation tool
+     * @return excavation tool name
      */
     public String getExcavationToolName() {
         // TODO implement here
@@ -127,7 +128,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of excavation tool
+     * @return the excavation tool description
      */
     public String getExcavationToolDesc() {
         // TODO implement here
@@ -135,7 +137,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of excavation tool
+     * @return the requirements for excavation tool
      */
     public Set<String> getExcavationToolRequirements() {
         // TODO implement here
@@ -143,7 +146,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of exploitation tool
+     * @return the exploitation tool status
      */
     public State getExploitationToolStatus() {
         // TODO implement here
@@ -151,7 +155,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of exploitation tool
+     * @return the exploitation tool name
      */
     public String getExploitationToolName() {
         // TODO implement here
@@ -159,7 +164,8 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of exploitation tool
+     * @return exploitation tool description
      */
     public String getExploitationToolDesc() {
         // TODO implement here
@@ -167,17 +173,17 @@ public class GameControleur {
     }
 
     /**
-     * @param name
-     * @return
+     * getter of exploitation tool
+     * @return exploitation tool's requirements
      */
-    public Set<String> getExploitationToolRequirements() {
+    public ArrayList<String> getExploitationToolRequirements() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name
-     * @return
+     * gette of relic
+     * @return name of the relic
      */
     public String getRelicName() {
         // TODO implement here
@@ -185,8 +191,8 @@ public class GameControleur {
     }
 
     /**
-     * @param name
-     * @return
+     * getter of relic
+     * @return description of the relic
      */
     public String getRelicDesc() {
         // TODO implement here
@@ -194,8 +200,8 @@ public class GameControleur {
     }
 
     /**
-     * @param name
-     * @return
+     * getter of relic
+     * @return relic image
      */
     public String getRelicImage() {
         // TODO implement here
@@ -203,31 +209,35 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of relic
+     * @return list of person in the game
      */
-    public Set<String> getPersonsList() {
+    public ArrayList<String> getPersonsList() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @return
+     * getter of excavation tool
+     * @return list of excavation tool in the game
      */
-    public Set<String> getExcavationToolsList() {
+    public ArrayList<String> getExcavationToolsList() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @return
+     * getter of exploitation tool
+     * @return list of exploitation tool in game
      */
-    public Set<String> getExploitationToolsList() {
+    public ArrayList<String> getExploitationToolsList() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @return
+     * getter of relic
+     * @return list of relics found by the player
      */
     public Set<String> getFoundRelicsList() {
         // TODO implement here
@@ -235,15 +245,17 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * getter of job
+     * @return list of available jobs
      */
-    public Set<String> getAvailableJobs() {
+    public ArrayList<String> getAvailableJobs() {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param name
+     * set the person on SELECT
+     * @param name name of the person who want change status on SELECT
      */
     public void selectPerson(String name) {
         // TODO implement here
@@ -293,5 +305,4 @@ public class GameControleur {
         // TODO implement here
         return null;
     }
-
 }
