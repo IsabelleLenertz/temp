@@ -60,7 +60,11 @@ public class Person {
     public File getImg(){
         return this.f;
     }
+
     public void setHighligthed(boolean val){
         this.isHighligthed = val;
+    }
+    public boolean isHighligthed() {
+        return isHighligthed;
     }
 }
