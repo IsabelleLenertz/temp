@@ -12,7 +12,6 @@ public class Person {
     private String desc;
     private JobEnum jobs;
     private boolean isHighligthed;
-    private static ArrayList<Person> listperson;
     private State status;
     private File f;
 
@@ -28,7 +27,6 @@ public class Person {
         this.jobs = jobs;
         this.isHighligthed = false;
         this.status = State.UNSELECT;
-        listperson.add(this);
     }
 
     public String getName() {
@@ -51,14 +49,7 @@ public class Person {
     public void setJobs(JobEnum jobs) {
         this.jobs = jobs;
     }
-
-    public static ArrayList<Person> getListperson() {
-        return listperson;
-    }
-    public void setListperson(ArrayList<Person> listperson) {
-        Person.listperson = listperson;
-    }
-
+    
     public State getStatus() {
         return status;
     }

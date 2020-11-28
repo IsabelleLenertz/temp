@@ -1,8 +1,6 @@
 package Control;
 
-import Model.JobEnum;
-import Model.Person;
-import Model.State;
+import Model.*;
 import View.*;
 
 import java.io.File;
@@ -13,10 +11,13 @@ import java.util.*;
  */
 public class GameControleur {
 
+    GameModel g;
+
     /**
      * Default constructor
      */
     public GameControleur() {
+        GameModel g = new GameModel();
     }
 
     /**
@@ -24,8 +25,8 @@ public class GameControleur {
      * @param personName name of the person who want highlight
      */
     public void highlightPerson(String personName) {
-        ArrayList<Person> listp = Person.getListperson();
-        for (Person p : listp) {
+        ArrayList<Person> persons = g.getPerson();
+        for (Person p : persons) {
             if (personName.equals(p.getName())) {
                 p.setHighligthed(true);
                 break;
@@ -35,10 +36,16 @@ public class GameControleur {
 
     /**
      * ask the model for highlight excavation tool
-     * @param excavactionToolName name of the excavation tool who want the name
+     * @param excavationToolName name of the excavation tool who want the name
      */
-    public void highlightExcavationTool(String excavactionToolName) {
-
+    public void highlightExcavationTool(String excavationToolName) {
+        ArrayList<ExcavationTool> list = g.getExcavationTool();
+        for (ExcavationTool e : list) {
+            if (excavationToolName.equals(e.getName())) {
+                e.setHighligt(true);
+                break;
+            }
+        }
     }
 
     /**
@@ -46,7 +53,13 @@ public class GameControleur {
      * @param exploitationToolName name of the exploitation tool who want the name
      */
     public void highlightExploitationTool(String exploitationToolName) {
-        // TODO implement here
+        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        for (ExploitationTool e : list) {
+            if (exploitationToolName.equals(e.getName())) {
+                e.setHighligthed(true);
+                break;
+            }
+        }
     }
 
     /**
@@ -76,7 +89,7 @@ public class GameControleur {
      * @return status of the person
      */
     public State getPersonStatus(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         State s = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
@@ -92,7 +105,7 @@ public class GameControleur {
      * @return name of the person
      */
     public String getPersonName(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         String s = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
@@ -108,7 +121,7 @@ public class GameControleur {
      * @return description of person
      */
     public String getPersonDesc(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         String s = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
@@ -124,7 +137,7 @@ public class GameControleur {
      * @return image of person
      */
     public File getPersonImage(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         File f = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
@@ -140,7 +153,7 @@ public class GameControleur {
      * @return list of person's jobs
      */
     public JobEnum getPersonJobs(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         JobEnum jobs = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
@@ -155,63 +168,112 @@ public class GameControleur {
      * getter of excavation tool
      * @return excavation tool status
      */
-    public State getExcavationToolStatus() {
-        // TODO implement here
-        return null;
+    public State getExcavationToolStatus(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
+        State s = null;
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
+                s = e.getStatus();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of excavation tool
      * @return excavation tool name
      */
-    public String getExcavationToolName(String name) {
-        // TODO implement here
-        return "";
+    public String getExcavationToolName(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
+        String s = "";
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
+                s = e.getName();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of excavation tool
      * @return the excavation tool description
      */
-    public String getExcavationToolDesc(String name) {
-        // TODO implement here
-        return "";
+    public String getExcavationToolDesc(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
+        String s = "";
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
+                s = e.getDesc();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of excavation tool
      * @return the requirements for excavation tool
      */
-    public Set<String> getExcavationToolRequirements(String name) {
-        // TODO implement here
-        return null;
+    public JobEnum getExcavationToolRequirements(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
+        JobEnum s = null;
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
+                s = e.getRequirements();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of exploitation tool
      * @return the exploitation tool status
      */
-    public State getExploitationToolStatus(String name) {
-        // TODO implement here
-        return null;
+    public State getExploitationToolStatus(String exploitationToolName) {
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
+        State s = null;
+        for (ExploitationTool e : liste) {
+            if (exploitationToolName.equals(e.getName())) {
+                s = e.getStatus();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of exploitation tool
      * @return the exploitation tool name
      */
-    public String getExploitationToolName(String name) {
-        // TODO implement here
-        return "";
+    public String getExploitationToolName(String exploitationToolName) {
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
+        String s = "";
+        for (ExploitationTool e : liste) {
+            if (exploitationToolName.equals(e.getName())) {
+                s = e.getName();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
      * getter of exploitation tool
      * @return exploitation tool description
      */
-    public String getExploitationToolDesc(String name) {
-        // TODO implement here
-        return "";
+    public String getExploitationToolDesc(String exploitationToolName) {
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
+        String s = "";
+        for (ExploitationTool e : liste) {
+            if (exploitationToolName.equals(e.getName())) {
+                s = e.getDesc();
+                break;
+            }
+        }
+        return s;
     }
 
     /**
@@ -262,10 +324,7 @@ public class GameControleur {
      * getter of excavation tool
      * @return list of excavation tool in the game
      */
-    public ArrayList<String> getExcavationToolsList(String name) {
-        // TODO implement here
-        return null;
-    }
+    public ArrayList<String> getExcavationToolsList(String excavactionToolName) {return null;}
 
     /**
      * getter of exploitation tool
@@ -299,7 +358,7 @@ public class GameControleur {
      * @param name name of the person who want change status on SELECT
      */
     public void selectPerson(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         for (Person p : listp) {
             if (name.equals(p.getName())) {
                 p.setStatus(State.SELECT);
@@ -313,7 +372,7 @@ public class GameControleur {
      * @param name name for the person who want unselect
      */
     public void unselectPerson(String name) {
-        ArrayList<Person> listp = Person.getListperson();
+        ArrayList<Person> listp = g.getPerson();
         for (Person p : listp) {
             if (name.equals(p.getName())) {
                 p.setStatus(State.UNSELECT);
