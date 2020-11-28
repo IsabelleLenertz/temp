@@ -4,7 +4,7 @@ package Model;
  * 
  */
 public enum State {
-    SELECT,
-    UNSELECT,
+    SELECTED,
+    UNSELECTED,
     UNAVAILABLE
 }

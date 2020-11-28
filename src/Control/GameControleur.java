@@ -361,7 +361,7 @@ public class GameControleur {
         ArrayList<Person> listp = g.getPerson();
         for (Person p : listp) {
             if (name.equals(p.getName())) {
-                p.setStatus(State.SELECT);
+                p.setStatus(State.SELECTED);
                 break;
             }
         }
@@ -375,7 +375,7 @@ public class GameControleur {
         ArrayList<Person> listp = g.getPerson();
         for (Person p : listp) {
             if (name.equals(p.getName())) {
-                p.setStatus(State.UNSELECT);
+                p.setStatus(State.UNSELECTED);
                 break;
             }
         }

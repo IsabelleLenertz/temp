@@ -26,7 +26,7 @@ public class Person {
         this.desc = desc;
         this.jobs = jobs;
         this.isHighligthed = false;
-        this.status = State.UNSELECT;
+        this.status = State.UNSELECTED;
     }
 
     public String getName() {

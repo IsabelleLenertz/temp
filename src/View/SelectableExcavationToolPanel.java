@@ -15,4 +15,9 @@ public class SelectableExcavationToolPanel extends SelectablePanel {
         super(name, g);
     }
 
+    @Override
+    public void update() {
+        this.setState(this.getG().getExcavationToolStatus(this.getName()));
+        super.update();
+    }
 }
