@@ -21,7 +21,7 @@ public class ExcavationTool {
         this.desc = desc;
         this.requirements = requirements;
         this.isHighligt = false;
-        this.status = State.UNSELECT;
+        this.status = State.UNSELECTED;
     }
 
     public String getName() {
