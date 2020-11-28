@@ -6,6 +6,8 @@ import observer.Observer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The generic class for the selectable characters/tools
@@ -23,7 +25,19 @@ public abstract class SelectablePanel extends JPanel implements Observer {
         this.g = g;
         this.state = State.UNSELECTED;
         this.selectButton = new JButton("Sélectionner");
+        this.selectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                select();
+            }
+        });
         this.unselectButton = new JButton("Désélectionner");
+        this.unselectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                unselect();
+            }
+        });
         this.unavailableButton = new JButton("Ressources manquantes");
         this.unavailableButton.setEnabled(false);
         //this.unavailableButton.setBackground();
@@ -69,7 +83,7 @@ public abstract class SelectablePanel extends JPanel implements Observer {
      * getter for the name
      * @return
      */
-    public String getPersonName() {
+    public String getSelectableName() {
         return name;
     }
 
@@ -77,14 +91,6 @@ public abstract class SelectablePanel extends JPanel implements Observer {
      * The panel's name
      */
     private String name;
-
-    /**
-     * Update the Panel
-     */
-    public void Update()
-    {
-
-    }
 
     public GameControleur getG() {
         return g;
@@ -121,4 +127,14 @@ public abstract class SelectablePanel extends JPanel implements Observer {
         }
         this.revalidate();
     }
+
+    /**
+     * Method to be called when the select button is clicked
+     */
+    abstract public void select();
+
+    /**
+     * Method to be called when the unselect button is clicked
+     */
+    abstract public void unselect();
 }
