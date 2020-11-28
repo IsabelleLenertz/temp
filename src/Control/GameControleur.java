@@ -24,11 +24,11 @@ public class GameControleur {
      * ask the model for highlight person
      * @param personName name of the person who want highlight
      */
-    public void highlightPerson(String personName) {
+    public void highlightPerson(String personName, boolean highlight) {
         ArrayList<Person> persons = g.getPerson();
         for (Person p : persons) {
             if (personName.equals(p.getName())) {
-                p.setHighligthed(true);
+                p.setHighlighted(highlight);
                 break;
             }
         }
@@ -38,11 +38,11 @@ public class GameControleur {
      * ask the model for highlight excavation tool
      * @param excavationToolName name of the excavation tool who want the name
      */
-    public void highlightExcavationTool(String excavationToolName) {
+    public void highlightExcavationTool(String excavationToolName, boolean highlight) {
         ArrayList<ExcavationTool> list = g.getExcavationTool();
         for (ExcavationTool e : list) {
             if (excavationToolName.equals(e.getName())) {
-                e.setHighligt(true);
+                e.setHighligt(highlight);
                 break;
             }
         }
@@ -52,11 +52,11 @@ public class GameControleur {
      * ask the model for highlight exploitation exploitation tool
      * @param exploitationToolName name of the exploitation tool who want the name
      */
-    public void highlightExploitationTool(String exploitationToolName) {
+    public void highlightExploitationTool(String exploitationToolName, boolean highlight) {
         ArrayList<ExploitationTool> list = g.getExploitationTool();
         for (ExploitationTool e : list) {
             if (exploitationToolName.equals(e.getName())) {
-                e.setHighligthed(true);
+                e.setHighligthed(highlight);
                 break;
             }
         }
@@ -66,22 +66,26 @@ public class GameControleur {
      * ask the model for highlight exploitation exploitation tool
      * @param relicName name of the relic who want highlight
      */
-    public void highlightRelic(String relicName) {
-        // TODO implement here
+    public void highlightRelic(String relicName, boolean highlight) {
+        ArrayList<Relic> list = g.getRelic();
+        for (Relic e : list) {
+            if (relicName.equals(e.getName())) {
+                e.setHighlighted(highlight);
+                break;
+            }
+        }
     }
 
     /**
      * remove all the highlight from the interface
      */
     public void clearHighlight() {
-        // TODO implement here
-    }
-
-    /**
-     * moves to the next window
-     */
-    public void nextStage() {
-        // TODO implement here
+        ArrayList<Person> listp = g.getPerson();
+        for (Person p : listp) {
+            if (p.isHighlighted()) {
+                p.setHighlighted(false);
+            }
+        }
     }
 
     /**
@@ -152,12 +156,12 @@ public class GameControleur {
      * getter of person
      * @return list of person's jobs
      */
-    public JobEnum getPersonJobs(String name) {
+    public String getPersonJobs(String name) {
         ArrayList<Person> listp = g.getPerson();
-        JobEnum jobs = null;
+        String jobs = "";
         for (Person p : listp) {
             if (name.equals(p.getName())) {
-                jobs = p.getJobs();
+                jobs = p.getJobs().toString();
                 break;
             }
         }
@@ -280,36 +284,56 @@ public class GameControleur {
      * getter of exploitation tool
      * @return exploitation tool's requirements
      */
-    public ArrayList<String> getExploitationToolRequirements(String name) {
-        // TODO implement here
-        return null;
+    public ArrayList<String> getExploitationToolRequirements() {
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
+        ArrayList<String> s = new ArrayList<>();
+        for (ExploitationTool e : liste) {
+            s.add(e.getName());
+        }
+        return s;
     }
 
     /**
-     * gette of relic
-     * @return name of the relic
+     * getter of relic
+     * @return name of all the relic
      */
-    public String getRelicName(String name) {
-        // TODO implement here
-        return "";
+    public ArrayList<String> getRelicName() {
+        ArrayList<Relic> liste = g.getRelic();
+        ArrayList<String> s = new ArrayList<>();
+        for (Relic e : liste) {
+            s.add(e.getName());
+        }
+        return s;
     }
 
     /**
      * getter of relic
      * @return description of the relic
      */
-    public String getRelicDesc(String name) {
-        // TODO implement here
-        return "";
+    public String getRelicDesc(String relicName) {
+        ArrayList<Relic> liste = g.getRelic();
+        String s = "";
+        for (Relic e : liste) {
+            if(e.getName().equals(relicName)){
+                s = e.getDesc();
+            }
+        }
+        return s;
     }
 
     /**
      * getter of relic
      * @return relic image
      */
-    public String getRelicImage(String name) {
-        // TODO implement here
-        return "";
+    public File getRelicImage(String relicName) {
+        ArrayList<Relic> liste = g.getRelic();
+        File s = null;
+        for (Relic e : liste) {
+            if(e.getName().equals(relicName)){
+                s = e.getImg();
+            }
+        }
+        return s;
     }
 
     /**
@@ -317,40 +341,66 @@ public class GameControleur {
      * @return list of person in the game
      */
     public ArrayList<String> getPersonsList() {
-        return null;
+        ArrayList<Relic> list = g.getRelic();
+        ArrayList<String> s = new ArrayList<>();
+        for (Relic e : list) {
+            s.add(e.getName());
+        }
+        return s;
     }
 
     /**
      * getter of excavation tool
      * @return list of excavation tool in the game
      */
-    public ArrayList<String> getExcavationToolsList(String excavactionToolName) {return null;}
+    public ArrayList<String> getExcavationToolsList() {
+        ArrayList<ExcavationTool> list = g.getExcavationTool();
+        ArrayList<String> s = new ArrayList<>();
+        for (ExcavationTool e : list) {
+            s.add(e.getName());
+        }
+        return s;
+    }
 
     /**
      * getter of exploitation tool
      * @return list of exploitation tool in game
      */
     public ArrayList<String> getExploitationToolsList(String name) {
-        // TODO implement here
-        return null;
+        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        ArrayList<String> s = new ArrayList<>();
+        for (ExploitationTool e : list) {
+            s.add(e.getName());
+        }
+        return s;
     }
 
     /**
      * getter of relic
      * @return list of relics found by the player
      */
-    public Set<String> getFoundRelicsList(String name) {
-        // TODO implement here
-        return null;
+    public ArrayList<String> getFoundRelicsList() {
+        ArrayList<Relic> list = g.getRelic();
+        ArrayList<String> s = new ArrayList<>();
+        for (Relic e : list) {
+            if(e.getFound()){
+                s.add(e.getName());
+            }
+        }
+        return s;
     }
 
     /**
      * getter of job
      * @return list of available jobs
      */
-    public ArrayList<String> getAvailableJobs(String name) {
-        // TODO implement here
-        return null;
+    public ArrayList<String> getAvailableJobs() {
+        ArrayList<Person> list = g.getPerson();
+        ArrayList<String> s = new ArrayList<>();
+        for (Person e : list) {
+            s.add(e.getJobs().toString());
+        }
+        return s;
     }
 
     /**
@@ -385,7 +435,13 @@ public class GameControleur {
      * @param name
      */
     public void selectExcavationTool(String name) {
-        // TODO implement here
+        ArrayList<ExcavationTool> list = g.getExcavationTool();
+        for (ExcavationTool p : list) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.SELECTED);
+                break;
+            }
+        }
     }
 
     /**
@@ -393,21 +449,39 @@ public class GameControleur {
      * @param name name of the excavation tool who want unselect
      */
     public void unselectExcavationTool(String name) {
-        // TODO implement here
+        ArrayList<ExcavationTool> list = g.getExcavationTool();
+        for (ExcavationTool p : list) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.UNSELECTED);
+                break;
+            }
+        }
     }
 
     /**
      * @param name
      */
     public void selectExploitationTool(String name) {
-        // TODO implement here
+        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        for (ExploitationTool p : list) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.SELECTED);
+                break;
+            }
+        }
     }
 
     /**
      * @param name
      */
     public void unselectExploitationTool(String name) {
-        // TODO implement here
+        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        for (ExploitationTool p : list) {
+            if (name.equals(p.getName())) {
+                p.setStatus(State.UNSELECTED);
+                break;
+            }
+        }
     }
 
     /**
@@ -416,5 +490,12 @@ public class GameControleur {
     public SideInfos getSideInfo() {
         // TODO implement here
         return null;
+    }
+
+    /**
+     * moves to the next window
+     */
+    public void nextStage() {
+        // TODO implement here
     }
 }
