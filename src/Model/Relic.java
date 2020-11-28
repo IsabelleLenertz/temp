@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -7,47 +8,78 @@ import java.util.*;
  */
 public class Relic {
 
+    private String name;
+    private String desc;
+    File f;
+    private Set<ExploitationTool> usedExploitationTool;
+    private Set<String> relicInformation;
+    private Integer value;
+    private Boolean isFound;
+    private Boolean isHighlighted;
+    private ArrayList<ExploitationTool> ExploitationToolsRequirement;
+
     /**
      * Default constructor
      */
     public Relic() {
     }
+    public Relic(String name, String desc, String img, Set<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value) throws Exception {
+        this.name = name;
+        this.desc = desc;
+        File f = new File(img);
+        this.usedExploitationTool = usedExploitationTool;
+        this.relicInformation = relicInformation;
+        this.value = value;
+        this.isFound = false;
+        this.isHighlighted = false;
+    }
 
-    /**
-     * 
-     */
-    private String name;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    /**
-     * 
-     */
-    private String desc;
+    public String getDesc() {
+        return desc;
+    }
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
-    /**
-     * 
-     */
-    private String img;
+    public File getImg() {
+        return f;
+    }
+    public void setImg(String img){
+        f = null;
+        f = new File(img);
+    }
 
-    /**
-     * 
-     */
-    private Set<ExploitationTool> usedExploitationTool;
+    public Set<ExploitationTool> getUsedExploitationTool() {
+        return usedExploitationTool;
+    }
+    public void setUsedExploitationTool(Set<ExploitationTool> usedExploitationTool) {
+        this.usedExploitationTool = usedExploitationTool;
+    }
 
-    /**
-     * 
-     */
-    private Set<String> relicInformation;
+    public Set<String> getRelicInformation() {
+        return relicInformation;
+    }
+    public void setRelicInformation(Set<String> relicInformation) {
+        this.relicInformation = relicInformation;
+    }
 
-    /**
-     * 
-     */
-    private Integer value;
+    public void setValue(Integer value) {
+        this.value = value;
+    }
 
-    /**
-     * 
-     */
-    private Boolean isFound;
-
+    public Boolean getFound() {
+        return isFound;
+    }
+    public void setFound(Boolean found) {
+        isFound = found;
+    }
 
     /**
      * @param usedExpoitationTools 
@@ -62,8 +94,21 @@ public class Relic {
      * @return
      */
     public Integer getValue() {
-        // TODO implement here
-        return null;
+        return this.value;
+    }
+
+    public boolean isHighlighted() {
+        return isHighlighted;
+    }
+    public void setHighlighted(boolean highlighted) {
+        isHighlighted = highlighted;
+    }
+
+    public ArrayList<ExploitationTool> getExploitationToolsRequirement() {
+        return ExploitationToolsRequirement;
+    }
+    public void setExploitationToolsRequirement(ArrayList<ExploitationTool> exploitationToolsRequirement) {
+        ExploitationToolsRequirement = exploitationToolsRequirement;
     }
 
 }
