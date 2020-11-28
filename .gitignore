@@ -2,3 +2,4 @@
 *.css
 *.class
 .DS_STORE
+.idea/workspace.xml

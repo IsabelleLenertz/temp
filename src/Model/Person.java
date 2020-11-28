@@ -10,8 +10,8 @@ public class Person {
 
     private String name;
     private String desc;
-    private JobEnum jobs;
-    private boolean isHighligthed;
+    private ArrayList<JobEnum> jobs;
+    private boolean isHighlighted;
     private State status;
     private File f;
 
@@ -21,11 +21,11 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String desc, JobEnum jobs) {
+    public Person(String name, String desc, ArrayList<JobEnum> jobs) {
         this.name = name;
         this.desc = desc;
         this.jobs = jobs;
-        this.isHighligthed = false;
+        this.isHighlighted = false;
         this.status = State.UNSELECTED;
     }
 
@@ -43,13 +43,10 @@ public class Person {
         this.desc = desc;
     }
 
-    public JobEnum getJobs() {
+    public ArrayList<JobEnum> getJobs() {
         return jobs;
     }
-    public void setJobs(JobEnum jobs) {
-        this.jobs = jobs;
-    }
-    
+
     public State getStatus() {
         return status;
     }
@@ -60,7 +57,11 @@ public class Person {
     public File getImg(){
         return this.f;
     }
-    public void setHighligthed(boolean val){
-        this.isHighligthed = val;
+
+    public void setHighlighted(boolean val){
+        this.isHighlighted = val;
+    }
+    public boolean isHighlighted() {
+        return isHighlighted;
     }
 }
