@@ -39,4 +39,20 @@ public class SelectableExcavationToolPanel extends SelectablePanel {
     public void unselect() {
         this.getG().unselectExcavationTool(this.getSelectableName());
     }
+
+    /**
+     * highlights the excavation tool in the model, to display the infos on the side (called when hovering mouse over the pannel)
+     */
+    @Override
+    public void highlight() {
+        this.getG().highlightExcavationTool(this.getSelectableName(), true);
+    }
+
+    /**
+     * unhighlights the excavation tool in the model, to hide the infos on the side (called when stop hovering over the pannel)
+     */
+    @Override
+    public void unhighlight() {
+        this.getG().highlightExcavationTool(this.getSelectableName(), false);
+    }
 }

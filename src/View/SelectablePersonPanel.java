@@ -21,7 +21,7 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void update() {
-        this.setState( this.getG().getPersonStatus(this.getSelectableName()));
+        // this.setState( this.getG().getPersonStatus(this.getSelectableName()));
         super.update();
     }
 
@@ -30,7 +30,7 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void select() {
-        this.getG().selectPerson(this.getSelectableName());
+        // this.getG().selectPerson(this.getSelectableName());
     }
 
     /**
@@ -38,6 +38,22 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void unselect() {
-        this.getG().unselectPerson(this.getSelectableName());
+        // this.getG().unselectPerson(this.getSelectableName());
+    }
+
+    /**
+     * hilights the person in the model, to display the infos on the side (called when hovering mouse over the pannel)
+     */
+    @Override
+    public void highlight() {
+        this.getG().highlightPerson(this.getSelectableName(), true);
+    }
+
+    /**
+     * unhilights the person in the model, to hide the infos on the side (called when stop hovering over the pannel)
+     */
+    @Override
+    public void unhighlight() {
+        this.getG().highlightPerson(this.getSelectableName(), false);
     }
 }

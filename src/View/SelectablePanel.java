@@ -8,11 +8,34 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * The generic class for the selectable characters/tools
  */
 public abstract class SelectablePanel extends JPanel implements Observer {
+
+    private class MListener implements MouseListener {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            highlight();
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            unhighlight();
+        }
+        // unused events, but have to be defined
+        @Override
+        public void mouseClicked(MouseEvent e) {}
+        @Override
+        public void mousePressed(MouseEvent e) {}
+        @Override
+        public void mouseReleased(MouseEvent e) {}
+    }
+
+
 
     /**
      * @param name
@@ -21,31 +44,42 @@ public abstract class SelectablePanel extends JPanel implements Observer {
      * Default constructor
      */
     public SelectablePanel(String name, GameControleur g) {
+
+        // attributes setup
         this.name = name;
         this.g = g;
         this.state = State.UNSELECTED;
         this.selectButton = new JButton("Sélectionner");
+
+        this.unselectButton = new JButton("Désélectionner");
+
+        this.unavailableButton = new JButton("Ressources manquantes");
+        this.unavailableButton.setEnabled(false);
+        this.add(new JLabel(name));
+
+        // action listeners setup
         this.selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 select();
             }
         });
-        this.unselectButton = new JButton("Désélectionner");
         this.unselectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 unselect();
             }
         });
-        this.unavailableButton = new JButton("Ressources manquantes");
-        this.unavailableButton.setEnabled(false);
-        //this.unavailableButton.setBackground();
-        this.add(new JLabel(name));
-        this.update();
+        MListener myListener = new MListener();
+        this.addMouseListener(myListener);
+        this.selectButton.addMouseListener(myListener);
+        this.unselectButton.addMouseListener(myListener);
+        this.unavailableButton.addMouseListener(myListener);
 
+        // basic default display
         this.setSize(325, 50);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+        this.update();
     }
 
     private GameControleur g;
@@ -137,4 +171,14 @@ public abstract class SelectablePanel extends JPanel implements Observer {
      * Method to be called when the unselect button is clicked
      */
     abstract public void unselect();
+
+    /**
+     * Method to be called when the mouse hovers over the pannel
+     */
+    abstract public void highlight();
+
+    /**
+     * Method to be called when the mouse stops hovering over the pannel
+     */
+    abstract public void unhighlight();
 }
