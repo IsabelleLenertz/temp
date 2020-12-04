@@ -56,7 +56,7 @@ public class GameControleur {
         ArrayList<ExploitationTool> list = g.getExploitationTool();
         for (ExploitationTool e : list) {
             if (exploitationToolName.equals(e.getName())) {
-                e.setHighligthed(highlight);
+                e.setHighlighted(highlight);
                 break;
             }
         }
@@ -138,11 +138,11 @@ public class GameControleur {
 
     /**
      * getter of person
-     * @return image of person
+     * @return image path of person
      */
-    public File getPersonImage(String name) {
+    public String getPersonImage(String name) {
         ArrayList<Person> listp = g.getPerson();
-        File f = null;
+        String f = null;
         for (Person p : listp) {
             if (name.equals(p.getName())) {
                 f = p.getImg();
@@ -220,9 +220,9 @@ public class GameControleur {
      * getter of excavation tool
      * @return the requirements for excavation tool
      */
-    public JobEnum getExcavationToolRequirements(String excavactionToolName) {
+    public ArrayList<JobEnum> getExcavationToolRequirements(String excavactionToolName) {
         ArrayList<ExcavationTool> liste = g.getExcavationTool();
-        JobEnum s = null;
+        ArrayList<JobEnum> s = null;
         for (ExcavationTool e : liste) {
             if (excavactionToolName.equals(e.getName())) {
                 s = e.getRequirements();
@@ -323,11 +323,11 @@ public class GameControleur {
 
     /**
      * getter of relic
-     * @return relic image
+     * @return relic image path
      */
-    public File getRelicImage(String relicName) {
+    public String getRelicImage(String relicName) {
         ArrayList<Relic> liste = g.getRelic();
-        File s = null;
+        String s = null;
         for (Relic e : liste) {
             if(e.getName().equals(relicName)){
                 s = e.getImg();
@@ -485,10 +485,48 @@ public class GameControleur {
     }
 
     /**
-     * @return
+     * Gets and create the side info view of the currently highlighted item in the model
+     * @return The view panel of the currently highlighted item
      */
     public SideInfos getSideInfo() {
-        // TODO implement here
+        SideInfos infos = null;
+        // if there is a highlighted person
+        Person highlightedPerson = g.getHighlightedPerson();
+        if (highlightedPerson != null) {
+            ArrayList<String> jobs = new ArrayList<String>();
+            for (JobEnum job : highlightedPerson.getJobs()) {
+                jobs.add(job.toString());
+                // TODO reformat the string to not be all capital letters
+            }
+            return new PersonnalInfos(highlightedPerson.getName(), highlightedPerson.getDesc(), jobs, highlightedPerson.getImg());
+        }
+        // if there is a highlighted relic
+        Relic highlightedRelic = g.getHighlightedRelic();
+        if (highlightedRelic != null) {
+            return new RelicInfo(highlightedRelic.getName(), highlightedRelic.getDesc(), highlightedRelic.getImg());
+        }
+        // if there is a highlighted excavation tool
+        ExcavationTool highlightedExcaTool = g.getHighlightedExcavationTool();
+        if (highlightedExcaTool != null) {
+            ArrayList<String> jobs = new ArrayList<String>();
+            for (JobEnum job : highlightedExcaTool.getRequirements()) {
+                jobs.add(job.toString());
+                // TODO reformat the string to not be all capital letters
+            }
+            return new ToolsInfos(highlightedExcaTool.getName(), highlightedExcaTool.getDesc(), jobs);
+        }
+        // if there is a highlighted exploitation tool
+        ExploitationTool highlightedExploTool = g.getHighlightedExploitationTool();
+        if (highlightedExploTool != null) {
+            ArrayList<String> jobs = new ArrayList<String>();
+            for (JobEnum job : highlightedExploTool.getRequirement()) {
+                jobs.add(job.toString());
+                // TODO reformat the string to not be all capital letters
+            }
+            return new ToolsInfos(highlightedExploTool.getName(), highlightedExploTool.getDesc(), jobs);
+        }
+
+        // if there is nothing highlighted
         return null;
     }
 
