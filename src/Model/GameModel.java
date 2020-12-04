@@ -25,23 +25,6 @@ public class GameModel {
         this.exploitationTools = exploitationTool;
     }
 
-    public Set<Relic> Relics() {
-        // TODO implement here
-        return null;
-    }
-    public Set<Person> Persons() {
-        // TODO implement here
-        return null;
-    }
-    public Set<ExcavationTool> ExcavationTools() {
-        // TODO implement here
-        return null;
-    }
-    public Set<ExploitationTool> ExploitationTools() {
-        // TODO implement here
-        return null;
-    }
-
     public ArrayList<Relic> getRelic() {
         return relics;
     }
