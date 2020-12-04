@@ -10,8 +10,8 @@ public class Relic {
 
     private String name;
     private String desc;
-    private File f;
-    private Set<ExploitationTool> usedExploitationTool;
+    private String f;
+    private ArrayList<ExploitationTool> usedExploitationTool;
     private Set<String> relicInformation;
     private Integer value;
     private Boolean isFound;
@@ -28,21 +28,22 @@ public class Relic {
      * Constructor
      * @param name name of the relic
      * @param desc description of the reli
-     * @param img
-     * @param usedExploitationTool
-     * @param relicInformation
-     * @param value
+     * @param img img of the relic
+     * @param usedExploitationTool list of the exploitation tools used
+     * @param relicInformation list of information on the relic
+     * @param value number of points
      * @throws Exception
      */
-    public Relic(String name, String desc, String img, Set<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value) throws Exception {
+    public Relic(String name, String desc, String img, ArrayList<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value, ArrayList<ExploitationTool> exploitationToolsRequirement) throws Exception {
         this.name = name;
         this.desc = desc;
-        File f = new File(img);
+        this.f = img;
         this.usedExploitationTool = usedExploitationTool;
         this.relicInformation = relicInformation;
         this.value = value;
         this.isFound = false;
         this.isHighlighted = false;
+        this.ExploitationToolsRequirement = exploitationToolsRequirement;
     }
 
     public String getName() {
@@ -59,18 +60,17 @@ public class Relic {
         this.desc = desc;
     }
 
-    public File getImg() {
+    public String getImg() {
         return f;
     }
     public void setImg(String img){
-        f = null;
-        f = new File(img);
+        this.f = img;
     }
 
-    public Set<ExploitationTool> getUsedExploitationTool() {
+    public ArrayList<ExploitationTool> getUsedExploitationTool() {
         return usedExploitationTool;
     }
-    public void setUsedExploitationTool(Set<ExploitationTool> usedExploitationTool) {
+    public void setUsedExploitationTool(ArrayList<ExploitationTool> usedExploitationTool) {
         this.usedExploitationTool = usedExploitationTool;
     }
 
