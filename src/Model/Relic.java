@@ -10,7 +10,7 @@ public class Relic {
 
     private String name;
     private String desc;
-    File f;
+    private File f;
     private Set<ExploitationTool> usedExploitationTool;
     private Set<String> relicInformation;
     private Integer value;
@@ -23,6 +23,17 @@ public class Relic {
      */
     public Relic() {
     }
+
+    /**
+     * Constructor
+     * @param name name of the relic
+     * @param desc description of the reli
+     * @param img
+     * @param usedExploitationTool
+     * @param relicInformation
+     * @param value
+     * @throws Exception
+     */
     public Relic(String name, String desc, String img, Set<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value) throws Exception {
         this.name = name;
         this.desc = desc;
@@ -81,18 +92,24 @@ public class Relic {
         isFound = found;
     }
 
-    /**
-     * @param usedExpoitationTools 
-     * @return
-     */
-    public String analyse(Set<ExploitationTool> usedExpoitationTools) {
-        // TODO implement here
-        return "";
+    public String analyse(ArrayList<ExploitationTool> usedExploitationTools) {
+        StringBuilder res = new StringBuilder();
+        for (ExploitationTool e: usedExploitationTools) {
+            for (ExploitationTool j: ExploitationToolsRequirement) {
+                if (e.getName().equals(j.getName())){
+                    res.append(e.getName()).append(" est le bon outil\n");
+                    // TODO implement the value increment
+                }
+            }
+        }
+
+        if(res.toString().equals("")){
+            return "Aucun outils selectionner n'est le bon";
+        }
+
+        return res.toString();
     }
 
-    /**
-     * @return
-     */
     public Integer getValue() {
         return this.value;
     }
