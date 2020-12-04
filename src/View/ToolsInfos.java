@@ -1,5 +1,7 @@
 package View;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -11,12 +13,11 @@ public class ToolsInfos extends SideInfos {
      * @param name
      * @param desc
      * @param Requirement
-     * @param img         Default constructor
+     * Default constructor
      */
-    public ToolsInfos(String name, String desc, ArrayList<String> Requirement, String img) {
+    public ToolsInfos(String name, String desc, ArrayList<String> Requirement) {
         super(name, desc);
         this.requirement = Requirement;
-        this.image = img;
     }
 
     /**
@@ -24,16 +25,43 @@ public class ToolsInfos extends SideInfos {
      */
     private ArrayList<String> requirement;
 
-    /**
-     * Path to the image
-     */
-    private String image;
-
     public ArrayList<String> getRequirement() {
         return requirement;
     }
 
     public void setRequirement(ArrayList<String> requirement) {
         this.requirement = requirement;
+    }
+
+    public void setDisplay()
+    {
+        int i = 2;
+
+        for(String job : requirement)
+        {
+            i++;
+        }
+
+        this.setLayout(new GridLayout(i, 0));
+
+        JLabel toolName = new JLabel(this.getName());
+        //toolName.setBackground(Color.BLUE);
+        toolName.setOpaque(true);
+        toolName.setVisible(true);
+
+        JLabel toolDesc = new JLabel(this.getDesc());
+        //toolDesc.setBackground(Color.RED);
+        toolDesc.setOpaque(true);
+        toolDesc.setVisible(true);
+
+        this.add(toolName);
+        this.add(toolDesc);
+
+        for(String job : requirement)
+        {
+            JLabel req = new JLabel(job);
+            this.add(req);
+        }
+
     }
 }

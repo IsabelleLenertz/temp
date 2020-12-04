@@ -4,6 +4,7 @@ import Control.GameControleur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * The view where the characters are chosen
@@ -20,7 +21,6 @@ public class TeamView extends StageView {
         super(g);
         this.setLayout(new GridBagLayout());
         setDisplay();
-        this.setVisible(true);
     }
 
     private JPanel resource;

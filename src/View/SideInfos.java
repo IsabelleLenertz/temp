@@ -1,9 +1,11 @@
 package View;
 
+import javax.swing.*;
+
 /**
  * Name of the character/method/object
  **/
-public abstract class SideInfos {
+public abstract class SideInfos extends JPanel {
 
     /**
      * @param name
@@ -20,13 +22,21 @@ public abstract class SideInfos {
 
     private String desc;
 
-    public String getName()
-    {
+    @Override
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    @Override
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }
