@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -7,7 +9,7 @@ public class ExcavationTool {
 
     private String name;
     private String desc;
-    private JobEnum requirements;
+    private ArrayList<JobEnum> requirements;
     private boolean isHighligt;
     private State status;
     /**
@@ -16,7 +18,7 @@ public class ExcavationTool {
     public ExcavationTool() {
     }
 
-    public ExcavationTool(String name, String desc, JobEnum requirements) {
+    public ExcavationTool(String name, String desc, ArrayList<JobEnum> requirements) {
         this.name = name;
         this.desc = desc;
         this.requirements = requirements;
@@ -38,11 +40,8 @@ public class ExcavationTool {
         this.desc = desc;
     }
 
-    public JobEnum getRequirements() {
+    public ArrayList<JobEnum> getRequirements() {
         return requirements;
-    }
-    public void setRequirements(JobEnum requirements) {
-        this.requirements = requirements;
     }
 
     public boolean isHighligt() {
