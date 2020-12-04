@@ -13,7 +13,7 @@ public class Person {
     private ArrayList<JobEnum> jobs;
     private boolean isHighlighted;
     private State status;
-    private File f;
+    private String f;
 
     /**
      * Default constructor
@@ -27,6 +27,20 @@ public class Person {
         this.jobs = jobs;
         this.isHighlighted = false;
         this.status = State.UNSELECTED;
+    }
+    public Person(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+        this.isHighlighted = false;
+        this.status = State.UNSELECTED;
+    }
+    public Person(String name, String desc, ArrayList<JobEnum> jobs, boolean isHighlighted, State status, String f) {
+        this.name = name;
+        this.desc = desc;
+        this.jobs = jobs;
+        this.isHighlighted = isHighlighted;
+        this.status = status;
+        this.f = f;
     }
 
     public String getName() {
@@ -54,7 +68,7 @@ public class Person {
         this.status = status;
     }
 
-    public File getImg(){
+    public String getImg(){
         return this.f;
     }
 
