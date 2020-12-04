@@ -2,11 +2,12 @@ package View;
 import javax.swing.*;
 
 import Control.GameControleur;
+import observer.Observer;
 
 /**
  * The stage's view
  */
-public abstract class StageView extends JPanel {
+public abstract class StageView extends JPanel implements Observer {
 
     /**
      * @param g
@@ -46,5 +47,11 @@ public abstract class StageView extends JPanel {
 
     public void setG(GameControleur g) {
         this.g = g;
+    }
+
+
+    @Override
+    public void update() {
+        // TODO update of the side info display
     }
 }

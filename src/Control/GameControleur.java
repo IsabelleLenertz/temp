@@ -366,7 +366,7 @@ public class GameControleur {
      * getter of exploitation tool
      * @return list of exploitation tool in game
      */
-    public ArrayList<String> getExploitationToolsList(String name) {
+    public ArrayList<String> getExploitationToolsList() {
         ArrayList<ExploitationTool> list = g.getExploitationTool();
         ArrayList<String> s = new ArrayList<>();
         for (ExploitationTool e : list) {

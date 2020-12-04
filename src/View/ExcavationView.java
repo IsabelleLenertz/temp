@@ -4,6 +4,7 @@ import Control.GameControleur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Excavation part's view
@@ -19,11 +20,32 @@ public class ExcavationView extends StageView {
         this.setLayout(new GridBagLayout());
         setDisplay();
         this.setVisible(true);
+
+        // generating the selectable tool panels
+        // TODO test once the scenario is implemented in the model
+        selectableExcavationTools = new ArrayList<SelectableExcavationToolPanel>();
+        for (String toolName : g.getExcavationToolsList()) {
+            SelectableExcavationToolPanel toolPan = new SelectableExcavationToolPanel(toolName, g);
+            selectableExcavationTools.add(toolPan);
+            tools.add(toolPan);
+        }
     }
+
+    @Override
+    public void update() {
+        super.update();
+        // TODO test once the scenario is implemented in the model
+        // updating each selectable tool panel
+        for (SelectableExcavationToolPanel toolPan : selectableExcavationTools) {
+            toolPan.update();
+        }
+    }
+
+    private ArrayList<SelectableExcavationToolPanel> selectableExcavationTools;
 
     private JPanel resource;
 
-    private JPanel characters;
+    private JPanel tools;
 
     private JPanel sideInfos;
 
@@ -42,8 +64,8 @@ public class ExcavationView extends StageView {
 
         setResource();
         this.add(resource, gc);
-        setCharacters();
-        this.add(characters, gc);
+        setTools();
+        this.add(tools, gc);
         setSideInfos();
         this.add(sideInfos, gc);
         setText();
@@ -68,12 +90,12 @@ public class ExcavationView extends StageView {
         gc.fill = GridBagConstraints.BOTH;
     }
 
-    private void setCharacters()
+    private void setTools()
     {
-        characters = new JPanel();
-        characters.setName("Char");
-        characters.setBackground(Color.BLUE);
-        characters.setVisible(true);
+        tools = new JPanel();
+        tools.setName("Char");
+        tools.setBackground(Color.BLUE);
+        tools.setVisible(true);
 
         gc.gridx = 1;
         gc.gridy = 0;
