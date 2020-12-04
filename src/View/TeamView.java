@@ -6,14 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Exploitation part's view
+ * The view where the characters are chosen
  */
-public class ExploitationView extends StageView {
+public class TeamView extends StageView {
 
     /**
+     * @param g
+     *
      * Default constructor
      */
-    public ExploitationView(GameControleur g)
+    public TeamView(GameControleur g)
     {
         super(g);
         this.setLayout(new GridBagLayout());
@@ -22,8 +24,6 @@ public class ExploitationView extends StageView {
     }
 
     private JPanel resource;
-
-    private JPanel relics;
 
     private JPanel characters;
 
@@ -44,8 +44,6 @@ public class ExploitationView extends StageView {
 
         setResource();
         this.add(resource, gc);
-        setRelics();
-        this.add(relics, gc);
         setCharacters();
         this.add(characters, gc);
         setSideInfos();
@@ -67,21 +65,7 @@ public class ExploitationView extends StageView {
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.weightx = 0.2;
-        gc.weighty = 0.9;
-        gc.fill = GridBagConstraints.BOTH;
-    }
-
-    private void setRelics()
-    {
-        relics = new JPanel();
-        relics.setName("relics");
-        relics.setBackground(Color.GRAY);
-        relics.setVisible(true);
-
-        gc.gridx = 1;
-        gc.gridy = 0;
-        gc.weightx = 0.2;
+        gc.weightx = 1.0;
         gc.weighty = 0.9;
         gc.fill = GridBagConstraints.BOTH;
     }
@@ -93,9 +77,9 @@ public class ExploitationView extends StageView {
         characters.setBackground(Color.BLUE);
         characters.setVisible(true);
 
-        gc.gridx = 2;
+        gc.gridx = 1;
         gc.gridy = 0;
-        gc.weightx = 0.75;
+        gc.weightx = 1.5;
         gc.fill = GridBagConstraints.BOTH;
     }
 
@@ -106,9 +90,9 @@ public class ExploitationView extends StageView {
         sideInfos.setVisible(true);
         sideInfos.setBackground(Color.GRAY);
 
-        gc.gridx = 3;
+        gc.gridx = 2;
         gc.gridy = 0;
-        gc.weightx = 0.15;
+        gc.weightx = 1.0;
         gc.fill = GridBagConstraints.BOTH;
     }
 
@@ -121,7 +105,7 @@ public class ExploitationView extends StageView {
 
         gc.gridx = 0;
         gc.gridy = 1;
-        gc.gridwidth = 3;
+        gc.gridwidth = 2;
         gc.weighty = 0.1;
         gc.fill = GridBagConstraints.BOTH;
     }
@@ -132,9 +116,8 @@ public class ExploitationView extends StageView {
         confirm.setBackground(Color.PINK);
         confirm.setVisible(true);
 
-        gc.gridx = 3;
+        gc.gridx = 2;
         gc.gridy = 1;
         gc.fill = GridBagConstraints.BOTH;
     }
-
 }

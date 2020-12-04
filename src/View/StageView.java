@@ -6,7 +6,7 @@ import Control.GameControleur;
 /**
  * The stage's view
  */
-public abstract class StageView {
+public abstract class StageView extends JPanel {
 
     /**
      * @param g
