@@ -1,17 +1,21 @@
 package Model;
 
+import observer.Observer;
+import observer.Subject;
+
 import java.util.*;
 
 /**
  * 
  */
-public class GameModel {
+public class GameModel implements Subject {
 
     private ArrayList<Relic> relics;
     private ArrayList<Person> personList;
     private ArrayList<ExcavationTool> excavationTools;
     private ArrayList<ExploitationTool> exploitationTools;
     private String rapport;
+    private ArrayList<Observer> observers;
 
     /**
      * Default constructor
@@ -23,6 +27,7 @@ public class GameModel {
         this.personList = person;
         this.excavationTools = excavationTool;
         this.exploitationTools = exploitationTool;
+        this.observers = new ArrayList<>();
     }
 
     public ArrayList<Relic> getRelic() {
@@ -70,7 +75,6 @@ public class GameModel {
         }
         return highlightedRelic;
     }
-
     public Person getHighlightedPerson() {
         Person highlightedPerson = null;
         for (Person pers : personList) {
@@ -81,7 +85,6 @@ public class GameModel {
         }
         return highlightedPerson;
     }
-
     public ExcavationTool getHighlightedExcavationTool() {
         ExcavationTool highlightedExcavationTool = null;
         for (ExcavationTool excaTool : excavationTools) {
@@ -92,7 +95,6 @@ public class GameModel {
         }
         return  highlightedExcavationTool;
     }
-
     public ExploitationTool getHighlightedExploitationTool() {
         ExploitationTool highlitedExploitationTool = null;
         for (ExploitationTool explTool : exploitationTools) {
@@ -102,5 +104,16 @@ public class GameModel {
             }
         }
         return highlitedExploitationTool;
+    }
+
+
+    @Override
+    public void addObserver(Observer obs) {
+        this.observers.add(obs);
+    }
+
+    @Override
+    public ArrayList<Observer> getObservers() {
+        return this.observers;
     }
 }
