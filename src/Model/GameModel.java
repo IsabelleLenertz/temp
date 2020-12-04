@@ -10,7 +10,7 @@ public class GameModel {
     private ArrayList<Relic> relics;
     private ArrayList<Person> personList;
     private ArrayList<ExcavationTool> excavationTools;
-    private ArrayList<ExploitationTool> exploitationTool;
+    private ArrayList<ExploitationTool> exploitationTools;
     private String rapport;
 
     /**
@@ -22,7 +22,7 @@ public class GameModel {
         this.relics = relic;
         this.personList = person;
         this.excavationTools = excavationTool;
-        this.exploitationTool = exploitationTool;
+        this.exploitationTools = exploitationTool;
     }
 
     public Set<Relic> Relics() {
@@ -64,10 +64,10 @@ public class GameModel {
     }
 
     public ArrayList<ExploitationTool> getExploitationTool() {
-        return exploitationTool;
+        return exploitationTools;
     }
     public void setExploitationTool(ArrayList<ExploitationTool> exploitationTool) {
-        this.exploitationTool = exploitationTool;
+        this.exploitationTools = exploitationTool;
     }
 
     public String getRapport() {
@@ -75,5 +75,49 @@ public class GameModel {
     }
     public void setRapport(String rapport) {
         this.rapport = rapport;
+    }
+
+    public Relic getHighlightedRelic() {
+        Relic highlightedRelic = null;
+        for (Relic rel : relics) {
+            if (rel.isHighlighted()) {
+                highlightedRelic = rel;
+                break;
+            }
+        }
+        return highlightedRelic;
+    }
+
+    public Person getHighlightedPerson() {
+        Person highlightedPerson = null;
+        for (Person pers : personList) {
+            if (pers.isHighlighted()) {
+                highlightedPerson = pers;
+                break;
+            }
+        }
+        return highlightedPerson;
+    }
+
+    public ExcavationTool getHighlightedExcavationTool() {
+        ExcavationTool highlightedExcavationTool = null;
+        for (ExcavationTool excaTool : excavationTools) {
+            if (excaTool.isHighligt()) {
+                highlightedExcavationTool = excaTool;
+                break;
+            }
+        }
+        return  highlightedExcavationTool;
+    }
+
+    public ExploitationTool getHighlightedExploitationTool() {
+        ExploitationTool highlitedExploitationTool = null;
+        for (ExploitationTool explTool : exploitationTools) {
+            if (explTool.isHighlighted()) {
+                highlitedExploitationTool = explTool;
+                break;
+            }
+        }
+        return highlitedExploitationTool;
     }
 }
