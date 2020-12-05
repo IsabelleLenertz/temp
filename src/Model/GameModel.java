@@ -1,5 +1,6 @@
 package Model;
 
+import View.StageView;
 import observer.Observer;
 import observer.Subject;
 
@@ -16,6 +17,7 @@ public class GameModel implements Subject {
     private ArrayList<ExploitationTool> exploitationTools;
     private String rapport;
     private ArrayList<Observer> observers;
+    private int currentStage;
 
     /**
      * Default constructor
@@ -28,6 +30,7 @@ public class GameModel implements Subject {
         this.excavationTools = excavationTool;
         this.exploitationTools = exploitationTool;
         this.observers = new ArrayList<>();
+        this.currentStage = 0;
     }
 
     public ArrayList<Relic> getRelic() {
@@ -106,6 +109,26 @@ public class GameModel implements Subject {
         return highlitedExploitationTool;
     }
 
+    public void nextStage(){
+        if (currentStage < 4){
+            currentStage++;
+        }
+        else{
+            currentStage = 0;
+        }
+
+        switch (currentStage){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+        this.notifyObservers();
+    }
 
     @Override
     public void addObserver(Observer obs) {
