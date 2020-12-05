@@ -395,12 +395,22 @@ public class GameControleur {
      * @return list of available jobs
      */
     public ArrayList<String> getAvailableJobs() {
-        ArrayList<Person> list = g.getPerson();
-        ArrayList<String> s = new ArrayList<>();
-        for (Person e : list) {
-            s.add(e.getJobs().toString());
+        ArrayList<String> availableJobs = new ArrayList<String>();
+        switch (g.getCurrentStage()) {
+            case 2:
+                for (JobEnum job : g.getAvailableExcavationJobs()) {
+                    // TODO reformat the string to not be all capital letters
+                    availableJobs.add(job.toString());
+                }
+                break;
+            case 3:
+                for (JobEnum job : g.getAvailableExploitationJobs()) {
+                    // TODO reformat the string to not be all capital letters
+                    availableJobs.add(job.toString());
+                }
+                break;
         }
-        return s;
+        return availableJobs;
     }
 
     /**
@@ -408,13 +418,7 @@ public class GameControleur {
      * @param name name of the person who want change status on SELECT
      */
     public void selectPerson(String name) {
-        ArrayList<Person> listp = g.getPerson();
-        for (Person p : listp) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.SELECTED);
-                break;
-            }
-        }
+        g.selectPerson(name);
     }
 
     /**
@@ -422,26 +426,14 @@ public class GameControleur {
      * @param name name for the person who want unselect
      */
     public void unselectPerson(String name) {
-        ArrayList<Person> listp = g.getPerson();
-        for (Person p : listp) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.UNSELECTED);
-                break;
-            }
-        }
+        g.unselectPerson(name);
     }
 
     /**
      * @param name
      */
     public void selectExcavationTool(String name) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
-        for (ExcavationTool p : list) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.SELECTED);
-                break;
-            }
-        }
+        g.selectExcavationTool(name);
     }
 
     /**
@@ -449,39 +441,21 @@ public class GameControleur {
      * @param name name of the excavation tool who want unselect
      */
     public void unselectExcavationTool(String name) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
-        for (ExcavationTool p : list) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.UNSELECTED);
-                break;
-            }
-        }
+        g.unselectExcavationTool(name);
     }
 
     /**
      * @param name
      */
     public void selectExploitationTool(String name) {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
-        for (ExploitationTool p : list) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.SELECTED);
-                break;
-            }
-        }
+        g.selectExploitationTool(name);
     }
 
     /**
      * @param name
      */
     public void unselectExploitationTool(String name) {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
-        for (ExploitationTool p : list) {
-            if (name.equals(p.getName())) {
-                p.setStatus(State.UNSELECTED);
-                break;
-            }
-        }
+        g.unselectExploitationTool(name);
     }
 
     /**
@@ -528,6 +502,23 @@ public class GameControleur {
 
         // if there is nothing highlighted
         return null;
+    }
+
+    /**
+     * Getter for the max number of persons you can hire
+     * @return max number of persons you can hire
+     */
+    public int getAvailableHireCount() {
+        return g.getAvailableHireCount();
+    }
+
+    /**
+     * Getter got the stage number
+     * @return Number of the game stage
+     */
+    public int getGameStage() {
+        // TODO get the number of the curent stage of the game
+        return 0;
     }
 
     /**
