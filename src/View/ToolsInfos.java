@@ -45,12 +45,10 @@ public class ToolsInfos extends SideInfos {
         this.setLayout(new GridLayout(i, 0));
 
         JLabel toolName = new JLabel(this.getName());
-        //toolName.setBackground(Color.BLUE);
         toolName.setOpaque(true);
         toolName.setVisible(true);
 
         JLabel toolDesc = new JLabel(this.getDesc());
-        //toolDesc.setBackground(Color.RED);
         toolDesc.setOpaque(true);
         toolDesc.setVisible(true);
 
