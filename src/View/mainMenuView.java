@@ -1,17 +1,25 @@
 package View;
 
+import Control.GameControleur;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The main menu's view
  */
-public class mainMenuView extends JPanel {
+public class MainMenuView extends JPanel {
+
+    private GameControleur g;
+
 
     /**
      * Default constructor
      */
-    public mainMenuView() {
+    public MainMenuView(GameControleur g) {
+        this.g = g;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setTitre("On l'appelle pas");
         this.add(new Box.Filler(new Dimension(100, 100), new Dimension(100, 100), new Dimension(getMaximumSize())));
@@ -29,6 +37,12 @@ public class mainMenuView extends JPanel {
         this.playButton.setMaximumSize(new Dimension(200, 50));
         this.playButton.setVisible(true);
         this.playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g.nextStage();
+            }
+        });
         this.add(this.playButton);
     }
 
