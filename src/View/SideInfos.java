@@ -16,6 +16,7 @@ public abstract class SideInfos extends JPanel {
     public SideInfos(String name, String desc) {
         this.name = name;
         this.desc = desc;
+        setDisplay();
     }
 
     private String name;
@@ -39,4 +40,6 @@ public abstract class SideInfos extends JPanel {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    public abstract void setDisplay();
 }
