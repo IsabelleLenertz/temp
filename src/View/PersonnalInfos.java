@@ -1,5 +1,11 @@
 package View;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -18,7 +24,7 @@ public class PersonnalInfos extends SideInfos {
     public PersonnalInfos(String name, String desc, ArrayList<String> jobs, String img) {
         super(name, desc);
         this.jobs = jobs;
-        this.images = img;
+        this.image = img;
     }
     /**
      *  List of the jobs that the character can do
@@ -28,7 +34,7 @@ public class PersonnalInfos extends SideInfos {
     /**
      * Path to the image
      */
-    private String images;
+    private String image;
 
     public ArrayList<String> getJobs() {
         return jobs;
@@ -38,5 +44,45 @@ public class PersonnalInfos extends SideInfos {
         this.jobs = jobs;
     }
 
+    public String getImage()
+    {
+        return this.image;
+    }
 
+    public void setDisplay()
+    {
+        int i = 3;
+
+        for(String job : jobs)
+        {
+            i++;
+        }
+
+        this.setLayout(new GridLayout(i, 0));
+
+        BufferedImage image = null;
+        try{
+            image = ImageIO.read(new File(this.getImage()));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        JLabel labelImg = new JLabel(new ImageIcon(image));
+        labelImg.setVisible(true);
+        
+        JLabel personnalName = new JLabel(this.getName());
+        personnalName.setVisible(true);
+
+        JLabel personnalDesc = new JLabel(this.getDesc());
+        personnalDesc.setVisible(true);
+
+        this.add(labelImg);
+        this.add(personnalName);
+        this.add(personnalDesc);
+
+        for(String job : jobs)
+        {
+            JLabel competence = new JLabel(job);
+            this.add(competence);
+        }
+    }
 }

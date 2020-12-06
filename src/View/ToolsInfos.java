@@ -33,6 +33,7 @@ public class ToolsInfos extends SideInfos {
         this.requirement = requirement;
     }
 
+    @Override
     public void setDisplay()
     {
         int i = 2;
@@ -45,11 +46,9 @@ public class ToolsInfos extends SideInfos {
         this.setLayout(new GridLayout(i, 0));
 
         JLabel toolName = new JLabel(this.getName());
-        toolName.setOpaque(true);
         toolName.setVisible(true);
 
         JLabel toolDesc = new JLabel(this.getDesc());
-        toolDesc.setOpaque(true);
         toolDesc.setVisible(true);
 
         this.add(toolName);
