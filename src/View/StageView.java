@@ -5,6 +5,8 @@ import Control.GameControleur;
 import observer.Observer;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The stage's view
@@ -135,6 +137,12 @@ public abstract class StageView extends JPanel implements Observer {
         confirm = new JButton("confirm");
         confirm.setBackground(Color.PINK);
         confirm.setVisible(true);
+        confirm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g.nextStage();
+            }
+        });
 
         gc.gridx = 2;
         gc.gridy = 1;
