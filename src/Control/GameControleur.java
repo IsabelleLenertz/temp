@@ -2,6 +2,8 @@ package Control;
 
 import Model.*;
 import View.*;
+
+import java.io.File;
 import java.util.*;
 
 /**
@@ -9,7 +11,7 @@ import java.util.*;
  */
 public class GameControleur {
 
-    private final GameModel g;
+    private GameModel g;
 
     /**
      * Default constructor
@@ -62,11 +64,27 @@ public class GameControleur {
      * @return status of the person
      */
     public State getPersonStatus(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         State s = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 s = p.getStatus();
+                break;
+            }
+        }
+        return s;
+    }
+
+    /**
+     * getter of person
+     * @return name of the person
+     */
+    public String getPersonName(String name) {
+        ArrayList<Person> listp = g.getPerson();
+        String s = null;
+        for (Person p : listp) {
+            if (name.equals(p.getName())) {
+                s = p.getName();
                 break;
             }
         }
@@ -78,9 +96,9 @@ public class GameControleur {
      * @return description of person
      */
     public String getPersonDesc(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String s = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 s = p.getDesc();
                 break;
@@ -94,9 +112,9 @@ public class GameControleur {
      * @return image path of person
      */
     public String getPersonImage(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String f = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 f = p.getImg();
                 break;
@@ -110,9 +128,9 @@ public class GameControleur {
      * @return list of person's jobs
      */
     public String getPersonJobs(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String jobs = "";
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 jobs = p.getJobs().toString();
                 break;
@@ -125,12 +143,28 @@ public class GameControleur {
      * getter of excavation tool
      * @return excavation tool status
      */
-    public State getExcavationToolStatus(String excavationToolName) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
+    public State getExcavationToolStatus(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
         State s = null;
-        for (ExcavationTool e : list) {
-            if (excavationToolName.equals(e.getName())) {
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
                 s = e.getStatus();
+                break;
+            }
+        }
+        return s;
+    }
+
+    /**
+     * getter of excavation tool
+     * @return excavation tool name
+     */
+    public String getExcavationToolName(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
+        String s = "";
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
+                s = e.getName();
                 break;
             }
         }
@@ -141,11 +175,11 @@ public class GameControleur {
      * getter of excavation tool
      * @return the excavation tool description
      */
-    public String getExcavationToolDesc(String excavationToolName) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
+    public String getExcavationToolDesc(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
         String s = "";
-        for (ExcavationTool e : list) {
-            if (excavationToolName.equals(e.getName())) {
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
                 s = e.getDesc();
                 break;
             }
@@ -157,11 +191,11 @@ public class GameControleur {
      * getter of excavation tool
      * @return the requirements for excavation tool
      */
-    public ArrayList<JobEnum> getExcavationToolRequirements(String excavationToolName) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
+    public ArrayList<JobEnum> getExcavationToolRequirements(String excavactionToolName) {
+        ArrayList<ExcavationTool> liste = g.getExcavationTool();
         ArrayList<JobEnum> s = null;
-        for (ExcavationTool e : list) {
-            if (excavationToolName.equals(e.getName())) {
+        for (ExcavationTool e : liste) {
+            if (excavactionToolName.equals(e.getName())) {
                 s = e.getRequirements();
                 break;
             }
@@ -174,11 +208,27 @@ public class GameControleur {
      * @return the exploitation tool status
      */
     public State getExploitationToolStatus(String exploitationToolName) {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
         State s = null;
-        for (ExploitationTool e : list) {
+        for (ExploitationTool e : liste) {
             if (exploitationToolName.equals(e.getName())) {
                 s = e.getStatus();
+                break;
+            }
+        }
+        return s;
+    }
+
+    /**
+     * getter of exploitation tool
+     * @return the exploitation tool name
+     */
+    public String getExploitationToolName(String exploitationToolName) {
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
+        String s = "";
+        for (ExploitationTool e : liste) {
+            if (exploitationToolName.equals(e.getName())) {
+                s = e.getName();
                 break;
             }
         }
@@ -190,9 +240,9 @@ public class GameControleur {
      * @return exploitation tool description
      */
     public String getExploitationToolDesc(String exploitationToolName) {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
         String s = "";
-        for (ExploitationTool e : list) {
+        for (ExploitationTool e : liste) {
             if (exploitationToolName.equals(e.getName())) {
                 s = e.getDesc();
                 break;
@@ -206,9 +256,9 @@ public class GameControleur {
      * @return exploitation tool's requirements
      */
     public ArrayList<String> getExploitationToolRequirements() {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
+        ArrayList<ExploitationTool> liste = g.getExploitationTool();
         ArrayList<String> s = new ArrayList<>();
-        for (ExploitationTool e : list) {
+        for (ExploitationTool e : liste) {
             s.add(e.getName());
         }
         return s;
@@ -219,9 +269,9 @@ public class GameControleur {
      * @return name of all the relic
      */
     public ArrayList<String> getRelicName() {
-        ArrayList<Relic> list = g.getRelic();
+        ArrayList<Relic> liste = g.getRelic();
         ArrayList<String> s = new ArrayList<>();
-        for (Relic e : list) {
+        for (Relic e : liste) {
             s.add(e.getName());
         }
         return s;
@@ -232,9 +282,9 @@ public class GameControleur {
      * @return description of the relic
      */
     public String getRelicDesc(String relicName) {
-        ArrayList<Relic> list = g.getRelic();
+        ArrayList<Relic> liste = g.getRelic();
         String s = "";
-        for (Relic e : list) {
+        for (Relic e : liste) {
             if(e.getName().equals(relicName)){
                 s = e.getDesc();
             }
@@ -247,9 +297,9 @@ public class GameControleur {
      * @return relic image path
      */
     public String getRelicImage(String relicName) {
-        ArrayList<Relic> list = g.getRelic();
+        ArrayList<Relic> liste = g.getRelic();
         String s = null;
-        for (Relic e : list) {
+        for (Relic e : liste) {
             if(e.getName().equals(relicName)){
                 s = e.getImg();
             }
@@ -351,8 +401,7 @@ public class GameControleur {
     }
 
     /**
-     * set the status of excavation tool to SELECT
-     * @param name name of the excavation who want to select
+     * @param name
      */
     public void selectExcavationTool(String name) {
         g.selectExcavationTool(name);
@@ -367,16 +416,14 @@ public class GameControleur {
     }
 
     /**
-     * set the status of excavation tool on SELECT
-     * @param name name of the excavation tool who want to select
+     * @param name
      */
     public void selectExploitationTool(String name) {
         g.selectExploitationTool(name);
     }
 
     /**
-     * set the status of exploitation tool on SELECT
-     * @param name name of the exploitation tool who want to select
+     * @param name
      */
     public void unselectExploitationTool(String name) {
         g.unselectExploitationTool(name);
@@ -387,6 +434,7 @@ public class GameControleur {
      * @return The view panel of the currently highlighted item
      */
     public SideInfos getSideInfo() {
+        SideInfos infos = null;
         // if there is a highlighted person
         Person highlightedPerson = g.getHighlightedPerson();
         if (highlightedPerson != null) {
@@ -403,24 +451,24 @@ public class GameControleur {
             return new RelicInfo(highlightedRelic.getName(), highlightedRelic.getDesc(), highlightedRelic.getImg());
         }
         // if there is a highlighted excavation tool
-        ExcavationTool highlightedExcavationTool = g.getHighlightedExcavationTool();
-        if (highlightedExcavationTool != null) {
+        ExcavationTool highlightedExcaTool = g.getHighlightedExcavationTool();
+        if (highlightedExcaTool != null) {
             ArrayList<String> jobs = new ArrayList<String>();
-            for (JobEnum job : highlightedExcavationTool.getRequirements()) {
+            for (JobEnum job : highlightedExcaTool.getRequirements()) {
                 jobs.add(job.toString());
                 // TODO reformat the string to not be all capital letters
             }
-            return new ToolsInfos(highlightedExcavationTool.getName(), highlightedExcavationTool.getDesc(), jobs);
+            return new ToolsInfos(highlightedExcaTool.getName(), highlightedExcaTool.getDesc(), jobs);
         }
         // if there is a highlighted exploitation tool
-        ExploitationTool highlightedExploitationTool = g.getHighlightedExploitationTool();
-        if (highlightedExploitationTool!= null) {
+        ExploitationTool highlightedExploTool = g.getHighlightedExploitationTool();
+        if (highlightedExploTool != null) {
             ArrayList<String> jobs = new ArrayList<String>();
-            for (JobEnum job : highlightedExploitationTool.getRequirement()) {
+            for (JobEnum job : highlightedExploTool.getRequirement()) {
                 jobs.add(job.toString());
                 // TODO reformat the string to not be all capital letters
             }
-            return new ToolsInfos(highlightedExploitationTool.getName(), highlightedExploitationTool.getDesc(), jobs);
+            return new ToolsInfos(highlightedExploTool.getName(), highlightedExploTool.getDesc(), jobs);
         }
 
         // if there is nothing highlighted
@@ -448,5 +496,10 @@ public class GameControleur {
      */
     public void nextStage() {
         g.nextStage();
+    }
+
+    // TODO remove this after finishing
+    public GameModel getG() {
+        return g;
     }
 }
