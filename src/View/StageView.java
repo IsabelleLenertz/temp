@@ -57,7 +57,6 @@ public abstract class StageView extends JPanel implements Observer {
     public void setDisplay()
     {
         this.setLayout(new GridBagLayout());
-        this.setVisible(true);
 
         gc = new GridBagConstraints();
         this.setBackground(Color.ORANGE);
