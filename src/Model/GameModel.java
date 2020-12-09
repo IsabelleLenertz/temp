@@ -122,13 +122,14 @@ public class GameModel implements Subject {
                 // Main menu
                 break;
             case 1:
-                // team selection
+                // starting team selection
                 break;
             case 2:
-                // excavation
+                // starting excavation
                 break;
             case 3:
-                // exploitation
+                checkFoundRelics();
+                // starting exploitation
                 break;
             case 4:
                 // results
@@ -440,4 +441,15 @@ public class GameModel implements Subject {
         notifyObservers();
     }
 
+    private void checkFoundRelics() {
+        ArrayList<ExcavationTool> usedTools = getSelectedExcavationTools();
+        for (Relic rel : relics) {
+            ArrayList<ExcavationTool> requiredTools = rel.getExcavationToolsRequirement();
+            boolean requirementsMet = true;
+            for (int i = 0; i < requiredTools.size() && requirementsMet; i++) {
+                requirementsMet = usedTools.contains(requiredTools.get(i));
+            }
+            rel.setFound(requirementsMet);
+        }
+    }
 }
