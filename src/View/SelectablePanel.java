@@ -2,8 +2,10 @@ package View;
 
 import Model.*;
 import Control.GameControleur;
+import jdk.dynalink.linker.GuardedInvocationTransformer;
 import observer.Observer;
 
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +57,7 @@ public abstract class SelectablePanel extends JPanel implements Observer {
 
         this.unavailableButton = new JButton("Ressources manquantes");
         this.unavailableButton.setEnabled(false);
+
         this.add(new JLabel(name));
 
         // action listeners setup
@@ -77,7 +80,6 @@ public abstract class SelectablePanel extends JPanel implements Observer {
         this.unavailableButton.addMouseListener(myListener);
 
         // basic default display
-        this.setSize(325, 50);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
         this.update();
     }
@@ -133,6 +135,7 @@ public abstract class SelectablePanel extends JPanel implements Observer {
     public void setG(GameControleur g) {
         this.g = g;
     }
+
 
     /**
      * Updates the display and availability of the button depending on the state

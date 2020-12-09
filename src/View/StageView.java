@@ -66,7 +66,7 @@ public abstract class StageView extends JPanel implements Observer {
         gc = new GridBagConstraints();
         this.setBackground(Color.ORANGE);
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gc.fill = GridBagConstraints.VERTICAL;
+        gc.fill = GridBagConstraints.BOTH;
 
         setResource();
         this.add(resource, gc);
@@ -85,13 +85,12 @@ public abstract class StageView extends JPanel implements Observer {
     protected void setResource()
     {
         resource = new JPanel();
-        resource.setName("RSS");
         resource.setBackground(Color.RED);
         resource.setVisible(true);
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.weightx = 1.0;
+        gc.weightx = 0.1;
         gc.weighty = 0.9;
         gc.fill = GridBagConstraints.BOTH;
     }
@@ -99,13 +98,13 @@ public abstract class StageView extends JPanel implements Observer {
     protected void setTools()
     {
         tools = new JPanel();
-        tools.setName("Char");
         tools.setBackground(Color.BLUE);
         tools.setVisible(true);
+        tools.setPreferredSize(tools.getSize());
 
         gc.gridx = 1;
         gc.gridy = 0;
-        gc.weightx = 1.5;
+        gc.weightx = 0.5;
         gc.fill = GridBagConstraints.BOTH;
         tools.setLayout(new BoxLayout(tools, BoxLayout.Y_AXIS));
     }
@@ -113,17 +112,16 @@ public abstract class StageView extends JPanel implements Observer {
     protected JPanel setSideInfos()
     {
         sideInfos = new JPanel();
-        sideInfos.setName("side");
         sideInfos.setVisible(true);
         sideInfos.setBackground(Color.GRAY);
 
         if (gc != null) {
             gc.gridx = 2;
             gc.gridy = 0;
-            gc.weightx = 1.0;
+            gc.weightx = 0.4;
             gc.fill = GridBagConstraints.BOTH;
         }
-
+        sideInfos.setPreferredSize(sideInfos.getSize());
         return  sideInfos;
     }
 
