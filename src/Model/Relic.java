@@ -14,14 +14,20 @@ public class Relic {
     private ArrayList<ExploitationTool> usedExploitationTool;
     private Set<String> relicInformation;
     private Integer value;
-    private Boolean isFound;
-    private Boolean isHighlighted;
+    private Boolean isFound = false;
+    private Boolean isHighlighted = false;
     private ArrayList<ExploitationTool> ExploitationToolsRequirement;
 
     /**
      * Default constructor
      */
     public Relic() {
+    }
+
+    public Relic(String name, String desc, ArrayList<ExploitationTool> exploitationToolsRequirement) {
+        this.name = name;
+        this.desc = desc;
+        ExploitationToolsRequirement = exploitationToolsRequirement;
     }
 
     /**

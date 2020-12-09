@@ -11,13 +11,13 @@ import java.util.*;
  */
 public class GameControleur {
 
-    GameModel g;
+    private GameModel g;
 
     /**
      * Default constructor
      */
     public GameControleur(ArrayList<Relic> relic, ArrayList<Person> person, ArrayList<ExcavationTool> excavationTool, ArrayList<ExploitationTool> exploitationTool) {
-        GameModel g = new GameModel(relic, person, excavationTool,exploitationTool);
+        this.g = new GameModel(relic, person, excavationTool,exploitationTool);
     }
 
     /**
@@ -341,9 +341,9 @@ public class GameControleur {
      * @return list of person in the game
      */
     public ArrayList<String> getPersonsList() {
-        ArrayList<Relic> list = g.getRelic();
+        ArrayList<Person> list = g.getPerson();
         ArrayList<String> s = new ArrayList<>();
-        for (Relic e : list) {
+        for (Person e : list) {
             s.add(e.getName());
         }
         return s;
@@ -525,5 +525,10 @@ public class GameControleur {
      */
     public void nextStage() {
         g.nextStage();
+    }
+
+    // TODO remove this after finishing
+    public GameModel getG() {
+        return g;
     }
 }
