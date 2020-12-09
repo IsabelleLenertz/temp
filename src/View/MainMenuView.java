@@ -14,7 +14,6 @@ public class MainMenuView extends JPanel {
 
     private GameControleur g;
 
-
     /**
      * Default constructor
      */
@@ -24,7 +23,6 @@ public class MainMenuView extends JPanel {
         setTitre("On l'appelle pas");
         this.add(new Box.Filler(new Dimension(100, 100), new Dimension(100, 100), new Dimension(getMaximumSize())));
         setPlayButton("PLAY !");
-        this.setSize(500,500);
     }
 
     private JLabel titre;
