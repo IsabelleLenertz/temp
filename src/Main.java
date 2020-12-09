@@ -18,11 +18,12 @@ public class Main {
         requirement1.add(JobEnum.JOB_ENUM1);
         requirement1.add(JobEnum.JOB_ENUM2);
 
-        ExploitationTool exploitationTool1 = new ExploitationTool("pioche", "objet de fouille", requirement1);
+        ExcavationTool excavationTool = new ExcavationTool("pioche", "objet de fouille", requirement1);
 
-        ExcavationTool excavationTool1 = new ExcavationTool("carbonne 14", "datation des composants", requirement1);
-        ExcavationTool excavationTool2 = new ExcavationTool("methode 2", "une methode", requirement1);
-        ExcavationTool excavationTool3 = new ExcavationTool("outil", "un outil", requirement1);
+        ExploitationTool exploitationTool = new ExploitationTool("carbonne 14", "datation des composants", requirement1);
+        ExploitationTool exploitationTool1 = new ExploitationTool("methode 2", "une methode2", requirement1);
+        ExploitationTool exploitationTool2 = new ExploitationTool("o", "un o", requirement1);
+        ExploitationTool exploitationTool3 = new ExploitationTool("outil 1.0", "un autre outil", requirement1);
 
         Person person1 = new Person("James", "Un mec", requirement1);
         Person person2 = new Person("James1", "Un mec", requirement1);
@@ -37,11 +38,12 @@ public class Main {
         Person person11 = new Person("James10", "Un mec", requirement1);
 
 
-        excavationTools.add(excavationTool1);
-        excavationTools.add(excavationTool2);
-        excavationTools.add(excavationTool3);
+        excavationTools.add(excavationTool);
 
+        exploitationTools.add(exploitationTool);
         exploitationTools.add(exploitationTool1);
+        exploitationTools.add(exploitationTool2);
+        exploitationTools.add(exploitationTool3);
 
         personArrayList.add(person1);
         personArrayList.add(person2);
