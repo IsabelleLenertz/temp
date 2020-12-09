@@ -24,7 +24,7 @@ public class ExcavationView extends StageView {
         for (String toolName : g.getExcavationToolsList()) {
             SelectableExcavationToolPanel toolPan = new SelectableExcavationToolPanel(toolName, g);
             selectableExcavationTools.add(toolPan);
-            tools.add(toolPan);
+            this.mainContent().add(toolPan);
         }
     }
 
@@ -40,21 +40,9 @@ public class ExcavationView extends StageView {
 
     private ArrayList<SelectableExcavationToolPanel> selectableExcavationTools;
 
-    private JPanel resource;
-
-    private JPanel tools;
-
-    private JPanel sideInfos;
-
-    private JLabel text;
-
-    private JButton confirm;
-
-    private GridBagConstraints gc;
-
     public void setResourceRestantes()
     {
-        resource.removeAll();
+        this.resources().removeAll();
 
         ArrayList<String> jobsList = this.getG().getAvailableJobs();
         while (jobsList.size() != 0) {
@@ -66,10 +54,10 @@ public class ExcavationView extends StageView {
                     jobsList.remove(i);
                 }
             }
-            resource.add(new JLabel(job + " x" + count));
+            this.resources().add(new JLabel(job + " x" + count));
         }
 
-        resource.revalidate();
+        this.resources().revalidate();
     }
 
 }
