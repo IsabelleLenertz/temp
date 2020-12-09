@@ -11,6 +11,9 @@ import java.util.ArrayList;
  */
 public class TeamView extends StageView {
 
+    private ArrayList<SelectablePersonPanel> selectablePersons;
+
+
     /**
      * @param g
      *
@@ -26,7 +29,7 @@ public class TeamView extends StageView {
         for (String persName : g.getPersonsList()) {
             SelectablePersonPanel persPan = new SelectablePersonPanel(persName, g);
             selectablePersons.add(persPan);
-            characters.add(persPan);
+            this.mainContent().add(persPan);
         }
     }
 
@@ -38,21 +41,9 @@ public class TeamView extends StageView {
         for (SelectablePersonPanel persPan : selectablePersons) {
             persPan.update();
         }
+        // updating ressouce display
+        setResourceRestantes();
     }
-
-    private ArrayList<SelectablePersonPanel> selectablePersons;
-
-    private JPanel resource;
-
-    private JPanel characters;
-
-    private JPanel sideInfos;
-
-    private JLabel text;
-
-    private JButton confirm;
-
-    private GridBagConstraints gc;
 
     public void setResourceRestantes()
     {
@@ -60,9 +51,9 @@ public class TeamView extends StageView {
         JLabel nbHireCount = new JLabel("Vous pouvez encore engager " + nb + " personnes !");
         nbHireCount.setVisible(true);
 
-        resource.removeAll();
-        resource.add(nbHireCount);
-        resource.revalidate();
+        this.resources().removeAll();
+        this.resources().add(nbHireCount);
+        this.resources().revalidate();
     }
 
 }

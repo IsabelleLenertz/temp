@@ -42,6 +42,14 @@ public abstract class StageView extends JPanel implements Observer {
         return g;
     }
 
+    public JPanel mainContent() {
+        return this.tools;
+    }
+
+    public JPanel resources() {
+        return this.resource;
+    }
+
     public void setG(GameControleur g) {
         this.g = g;
     }
