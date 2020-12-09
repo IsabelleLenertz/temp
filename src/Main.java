@@ -18,11 +18,12 @@ public class Main {
         requirement1.add(JobEnum.JOB_ENUM1);
         requirement1.add(JobEnum.JOB_ENUM2);
 
-        ExploitationTool exploitationTool1 = new ExploitationTool("pioche", "objet de fouille", requirement1);
+        ExploitationTool exploitationTool1 = new ExploitationTool("Datation carbone", "Dater les objets a l'aide de l'isotope radioactif carbonne 14", requirement1);
+        ExploitationTool exploitationTool2 = new ExploitationTool("Regarder en détails", "Lance in d100 de percéption pour voir si tu trouve quelque chose", requirement1);
 
-        ExcavationTool excavationTool1 = new ExcavationTool("carbonne 14", "datation des composants", requirement1);
-        ExcavationTool excavationTool2 = new ExcavationTool("methode 2", "une methode", requirement1);
-        ExcavationTool excavationTool3 = new ExcavationTool("outil", "un outil", requirement1);
+        ExcavationTool excavationTool1 = new ExcavationTool("Pioche", "T'as joué a minecraft quand même", requirement1);
+        ExcavationTool excavationTool2 = new ExcavationTool("TNT", "ça va plus vite que la pioche mais c'est plus destructeur", requirement1);
+        ExcavationTool excavationTool3 = new ExcavationTool("Scan sismique", "Tu deviens Toff dans le dernier maitre de l'air et tu scan le sol avec tes pieds", requirement1);
 
         Person person1 = new Person("James", "Un mec", requirement1);
         Person person2 = new Person("James1", "Un mec", requirement1);
@@ -42,6 +43,7 @@ public class Main {
         excavationTools.add(excavationTool3);
 
         exploitationTools.add(exploitationTool1);
+        exploitationTools.add(exploitationTool2);
 
         personArrayList.add(person1);
         personArrayList.add(person2);
@@ -55,7 +57,23 @@ public class Main {
         personArrayList.add(person10);
         personArrayList.add(person11);
 
-        Relic relic1 = new Relic("os", "matiere organique", exploitationTools, excavationTools);
+
+        ArrayList<ExcavationTool> relicExcavationToolList = new ArrayList<>();
+        relicExcavationToolList.add(excavationTool2);
+
+        ArrayList<ExploitationTool> relicExploitationToolList = new ArrayList<>();
+        relicExploitationToolList.add(exploitationTool1);
+        relicExploitationToolList.add(exploitationTool2);
+
+        ArrayList<String> relicInfos = new ArrayList<>();
+        relicInfos.add("C'est un vieux nonos");
+        relicInfos.add("Ce nonos est gros, ton chien l'adorerais");
+
+        ArrayList<Integer> relicInfoValues = new ArrayList<>();
+        relicInfoValues.add(15);
+        relicInfoValues.add(12);
+
+        Relic relic1 = new Relic("TRE GROS OS", "Ossements chelou", "./quel/beau/chemin", 10, relicInfos, relicInfoValues, relicExploitationToolList, relicExcavationToolList);
         relics.add(relic1);
 
         GameControleur g = new GameControleur(new GameModel(relics, personArrayList, excavationTools, exploitationTools));
