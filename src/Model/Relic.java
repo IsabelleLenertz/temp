@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -7,31 +8,49 @@ import java.util.*;
  */
 public class Relic {
 
-    private final String name;
-    private final String desc;
-    private final String imgPath;
-    private final Integer baseValue;
-
-    private final ArrayList<String> relicInformation;
-    private final ArrayList<Integer> infoValues;
-
+    private String name;
+    private String desc;
+    private String f;
+    private ArrayList<ExploitationTool> usedExploitationTool;
+    private Set<String> relicInformation;
+    private Integer value;
     private Boolean isFound = false;
     private Boolean isHighlighted = false;
-    private int totalValue = 0;
-
-    private final ArrayList<ExploitationTool> exploitationToolsRequirement;
-    private final ArrayList<ExcavationTool> excavationToolsRequirement;
+    private ArrayList<ExploitationTool> exploitationToolsRequirement;
+    private ArrayList<ExcavationTool> excavationToolsRequirement;
 
     /**
-     *
+     * Default constructor
      */
-    public Relic(String name, String desc, String img, Integer baseValue, ArrayList<String> relicInformation, ArrayList<Integer> infoValues, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) {
+    public Relic() {
+    }
+
+    public Relic(String name, String desc, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) {
         this.name = name;
         this.desc = desc;
-        this.imgPath = img;
-        this.baseValue = baseValue;
+        this.exploitationToolsRequirement = exploitationToolsRequirement;
+        this.excavationToolsRequirement = excavationToolsRequirement;
+    }
+
+    /**
+     * Constructor
+     * @param name name of the relic
+     * @param desc description of the reli
+     * @param img img of the relic
+     * @param usedExploitationTool list of the exploitation tools used
+     * @param relicInformation list of information on the relic
+     * @param value number of points
+     * @throws Exception
+     */
+    public Relic(String name, String desc, String img, ArrayList<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) throws Exception {
+        this.name = name;
+        this.desc = desc;
+        this.f = img;
+        this.usedExploitationTool = usedExploitationTool;
         this.relicInformation = relicInformation;
-        this.infoValues = infoValues;
+        this.value = value;
+        this.isFound = false;
+        this.isHighlighted = false;
         this.exploitationToolsRequirement = exploitationToolsRequirement;
         this.excavationToolsRequirement = excavationToolsRequirement;
     }
@@ -39,13 +58,40 @@ public class Relic {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getDesc() {
         return desc;
     }
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     public String getImg() {
-        return imgPath;
+        return f;
+    }
+    public void setImg(String img){
+        this.f = img;
+    }
+
+    public ArrayList<ExploitationTool> getUsedExploitationTool() {
+        return usedExploitationTool;
+    }
+    public void setUsedExploitationTool(ArrayList<ExploitationTool> usedExploitationTool) {
+        this.usedExploitationTool = usedExploitationTool;
+    }
+
+    public Set<String> getRelicInformation() {
+        return relicInformation;
+    }
+    public void setRelicInformation(Set<String> relicInformation) {
+        this.relicInformation = relicInformation;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     public Boolean getFound() {
@@ -53,6 +99,28 @@ public class Relic {
     }
     public void setFound(Boolean found) {
         isFound = found;
+    }
+
+    public String analyse(ArrayList<ExploitationTool> usedExploitationTools) {
+        StringBuilder res = new StringBuilder();
+        for (ExploitationTool e: usedExploitationTools) {
+            for (ExploitationTool j: exploitationToolsRequirement) {
+                if (e.getName().equals(j.getName())){
+                    res.append(e.getName()).append(" est le bon outil\n");
+                    // TODO implement the value increment
+                }
+            }
+        }
+
+        if(res.toString().equals("")){
+            return "Aucun outils selectionner n'est le bon";
+        }
+
+        return res.toString();
+    }
+
+    public Integer getValue() {
+        return this.value;
     }
 
     public boolean isHighlighted() {
@@ -65,32 +133,11 @@ public class Relic {
     public ArrayList<ExcavationTool> getExcavationToolsRequirement() {
         return excavationToolsRequirement;
     }
-
-    // public ArrayList<ExploitationTool> getExploitationToolsRequirement() {
-    //    return exploitationToolsRequirement;
-    // }
-
-    public String analyze(ArrayList<ExploitationTool> usedExploitationTools) {
-        totalValue = 0;
-        String recap = "";
-        if (isFound) {
-            totalValue += baseValue;
-            for (int i = 0; i < exploitationToolsRequirement.size(); i++) {
-                ExploitationTool tool = exploitationToolsRequirement.get(i);
-                if (usedExploitationTools.contains(tool)) {
-                    totalValue += infoValues.get(i);
-                    recap += tool.getName() + " : ";
-                    recap += relicInformation.get(i) + "\n";
-                }
-            }
-            if (recap.equals("")) {
-                recap = "Aucune information pertinente n'as été trouvée.";
-            }
-        }
-        return recap;
+    public ArrayList<ExploitationTool> getExploitationToolsRequirement() {
+        return exploitationToolsRequirement;
+    }
+    public void setExploitationToolsRequirement(ArrayList<ExploitationTool> exploitationToolsRequirement) {
+        exploitationToolsRequirement = exploitationToolsRequirement;
     }
 
-    public int getTotalValue() {
-        return totalValue;
-    }
 }
