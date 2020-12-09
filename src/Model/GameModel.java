@@ -11,19 +11,22 @@ import java.util.*;
  */
 public class GameModel implements Subject {
     private final int maxHireNumber = 10; // TODO to balance for the game scenario
-    private ArrayList<Relic> relics;
-    private ArrayList<Person> personList;
-    private ArrayList<ExcavationTool> excavationTools;
-    private ArrayList<ExploitationTool> exploitationTools;
+    private final ArrayList<Relic> relics;
+    private final ArrayList<Person> personList;
+    private final ArrayList<ExcavationTool> excavationTools;
+    private final ArrayList<ExploitationTool> exploitationTools;
     private String rapport;
-    private ArrayList<Observer> observers;
+    private final ArrayList<Observer> observers;
     private int currentStage;
 
+
     /**
-     * Default constructor
+     * Constructor for the GameModel
+     * @param relic list of relics presents in the game
+     * @param person list of the persons presents in the game
+     * @param excavationTool list of the excavation tools presents in the game
+     * @param exploitationTool list of the exploitation tools presents in the game
      */
-    public GameModel() {
-    }
     public GameModel(ArrayList<Relic> relic, ArrayList<Person> person, ArrayList<ExcavationTool> excavationTool, ArrayList<ExploitationTool> exploitationTool) {
         this.relics = relic;
         this.personList = person;
@@ -33,39 +36,28 @@ public class GameModel implements Subject {
         this.currentStage = 0;
     }
 
+    /**
+     * getter for
+     * @return
+     */
     public ArrayList<Relic> getRelic() {
         return relics;
     }
-    public void setRelic(ArrayList<Relic>  relic) {
-        this.relics = relic;
-    }
-
+    
     public ArrayList<Person> getPerson() {
         return this.personList;
-    }
-    public void setPerson(ArrayList<Person> person) {
-        this.personList = person;
     }
 
     public ArrayList<ExcavationTool>getExcavationTool() {
         return excavationTools;
     }
-    public void setExcavationTool(ArrayList<ExcavationTool> excavationTool) {
-        this.excavationTools = excavationTool;
-    }
 
     public ArrayList<ExploitationTool> getExploitationTool() {
         return exploitationTools;
     }
-    public void setExploitationTool(ArrayList<ExploitationTool> exploitationTool) {
-        this.exploitationTools = exploitationTool;
-    }
 
     public String getRapport() {
         return rapport;
-    }
-    public void setRapport(String rapport) {
-        this.rapport = rapport;
     }
 
     public Relic getHighlightedRelic() {
@@ -80,9 +72,9 @@ public class GameModel implements Subject {
     }
     public Person getHighlightedPerson() {
         Person highlightedPerson = null;
-        for (Person pers : personList) {
-            if (pers.isHighlighted()) {
-                highlightedPerson = pers;
+        for (Person person : personList) {
+            if (person.isHighlighted()) {
+                highlightedPerson = person;
                 break;
             }
         }
@@ -90,23 +82,23 @@ public class GameModel implements Subject {
     }
     public ExcavationTool getHighlightedExcavationTool() {
         ExcavationTool highlightedExcavationTool = null;
-        for (ExcavationTool excaTool : excavationTools) {
-            if (excaTool.isHighligt()) {
-                highlightedExcavationTool = excaTool;
+        for (ExcavationTool excavationTool : excavationTools) {
+            if (excavationTool.isHighligt()) {
+                highlightedExcavationTool = excavationTool;
                 break;
             }
         }
         return  highlightedExcavationTool;
     }
     public ExploitationTool getHighlightedExploitationTool() {
-        ExploitationTool highlitedExploitationTool = null;
-        for (ExploitationTool explTool : exploitationTools) {
-            if (explTool.isHighlighted()) {
-                highlitedExploitationTool = explTool;
+        ExploitationTool highlightedExploitationTool = null;
+        for (ExploitationTool exploitationTool : exploitationTools) {
+            if (exploitationTool.isHighlighted()) {
+                highlightedExploitationTool = exploitationTool;
                 break;
             }
         }
-        return highlitedExploitationTool;
+        return highlightedExploitationTool;
     }
 
     public void nextStage(){
@@ -151,17 +143,17 @@ public class GameModel implements Subject {
     }
 
     public ArrayList<Person> getSelectedPersons() {
-        ArrayList<Person> selectedP = new ArrayList<Person>();
-        for (Person pers : personList) {
-            if (pers.getStatus() == State.SELECTED) {
-                selectedP.add(pers);
+        ArrayList<Person> selectedP = new ArrayList<>();
+        for (Person person : personList) {
+            if (person.getStatus() == State.SELECTED) {
+                selectedP.add(person);
             }
         }
         return selectedP;
     }
 
     private ArrayList<ExcavationTool> getSelectedExcavationTools() {
-        ArrayList<ExcavationTool> selectedT = new ArrayList<ExcavationTool>();
+        ArrayList<ExcavationTool> selectedT = new ArrayList<>();
         for (ExcavationTool tool : excavationTools) {
             if (tool.getStatus() == State.SELECTED) {
                 selectedT.add(tool);
@@ -171,7 +163,7 @@ public class GameModel implements Subject {
     }
 
     private ArrayList<ExploitationTool> getSelectedExploitationTools() {
-        ArrayList<ExploitationTool> selectedT = new ArrayList<ExploitationTool>();
+        ArrayList<ExploitationTool> selectedT = new ArrayList<>();
         for (ExploitationTool tool : exploitationTools) {
             if (tool.getStatus() == State.SELECTED) {
                 selectedT.add(tool);
@@ -181,9 +173,9 @@ public class GameModel implements Subject {
     }
 
     private ArrayList<JobEnum> getUsableJobs() {
-        ArrayList<JobEnum> jobs = new ArrayList<JobEnum>();
-        for (Person pers : getSelectedPersons()) {
-            for (JobEnum job : pers.getJobs()) {
+        ArrayList<JobEnum> jobs = new ArrayList<>();
+        for (Person person : getSelectedPersons()) {
+            for (JobEnum job : person.getJobs()) {
                 jobs.add(job);
             }
         }
@@ -191,9 +183,9 @@ public class GameModel implements Subject {
     }
 
     private ArrayList<JobEnum> getUsedJobsForExcavation() {
-        ArrayList<JobEnum> jobs = new ArrayList<JobEnum>();
-        for (ExcavationTool excaTool : getSelectedExcavationTools()) {
-            for (JobEnum job : excaTool.getRequirements()) {
+        ArrayList<JobEnum> jobs = new ArrayList<>();
+        for (ExcavationTool excavationTool : getSelectedExcavationTools()) {
+            for (JobEnum job : excavationTool.getRequirements()) {
                 jobs.add(job);
             }
         }
@@ -201,9 +193,9 @@ public class GameModel implements Subject {
     }
 
     private ArrayList<JobEnum> getUsedJobsForExploitation() {
-        ArrayList<JobEnum> jobs = new ArrayList<JobEnum>();
-        for (ExploitationTool exploTool : getSelectedExploitationTools()) {
-            for (JobEnum job : exploTool.getRequirement()) {
+        ArrayList<JobEnum> jobs = new ArrayList<>();
+        for (ExploitationTool exploitationTool : getSelectedExploitationTools()) {
+            for (JobEnum job : exploitationTool.getRequirement()) {
                 jobs.add(job);
             }
         }
@@ -214,9 +206,9 @@ public class GameModel implements Subject {
         ArrayList<JobEnum> availableJobs = getUsableJobs();
         ArrayList<JobEnum> usedJobs = getUsedJobsForExcavation();
         // or each used job, we need to remove 1 of the resource in the available jobs
-        for (int i = 0; i < usedJobs.size(); i++) {
+        for (JobEnum usedJob : usedJobs) {
             for (int j = 0; j < availableJobs.size(); j++) {
-                if (availableJobs.get(j) == usedJobs.get(i)) {
+                if (availableJobs.get(j) == usedJob) {
                     availableJobs.remove(j);
                     break;
                 }
@@ -229,9 +221,9 @@ public class GameModel implements Subject {
         ArrayList<JobEnum> availableJobs = getUsableJobs();
         ArrayList<JobEnum> usedJobs = getUsedJobsForExploitation();
         // or each used job, we need to remove 1 of the resource in the available jobs
-        for (int i = 0; i < usedJobs.size(); i++) {
+        for (JobEnum usedJob : usedJobs) {
             for (int j = 0; j < availableJobs.size(); j++) {
-                if (availableJobs.get(j) == usedJobs.get(i)) {
+                if (availableJobs.get(j) == usedJob) {
                     availableJobs.remove(j);
                     break;
                 }
@@ -258,9 +250,9 @@ public class GameModel implements Subject {
         }
         // updating the available persons
         if (getAvailableHireCount() == 0) {
-            for (Person pers : personList) {
-                if (pers.getStatus() == State.UNSELECTED) {
-                    pers.setStatus(State.UNAVAILABLE);
+            for (Person person : personList) {
+                if (person.getStatus() == State.UNSELECTED) {
+                    person.setStatus(State.UNAVAILABLE);
                 }
             }
         }
@@ -278,9 +270,9 @@ public class GameModel implements Subject {
         }
         // updating the available persons
         if (getAvailableHireCount() != 0) {
-            for (Person pers : personList) {
-                if (pers.getStatus() == State.UNAVAILABLE) {
-                    pers.setStatus(State.UNSELECTED);
+            for (Person person : personList) {
+                if (person.getStatus() == State.UNAVAILABLE) {
+                    person.setStatus(State.UNSELECTED);
                 }
             }
         }
