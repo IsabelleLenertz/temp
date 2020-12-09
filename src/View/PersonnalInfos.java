@@ -25,6 +25,40 @@ public class PersonnalInfos extends SideInfos {
         super(name, desc);
         this.jobs = jobs;
         this.image = img;
+
+        int i = 3;
+
+        for(String job : jobs)
+        {
+            i++;
+        }
+
+        this.setLayout(new GridLayout(i, 0));
+
+        /*BufferedImage image = null;
+        try{
+            image = ImageIO.read(new File(this.getImage()));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        JLabel labelImg = new JLabel(new ImageIcon(image));
+        labelImg.setVisible(true);*/
+
+        JLabel personnalName = new JLabel(this.getName());
+        personnalName.setVisible(true);
+
+        JLabel personnalDesc = new JLabel(this.getDesc());
+        personnalDesc.setVisible(true);
+
+        //this.add(labelImg);
+        this.add(personnalName);
+        this.add(personnalDesc);
+
+        for(String job : jobs)
+        {
+            JLabel competence = new JLabel(job);
+            this.add(competence);
+        }
     }
     /**
      *  List of the jobs that the character can do
@@ -51,38 +85,6 @@ public class PersonnalInfos extends SideInfos {
 
     public void setDisplay()
     {
-        int i = 3;
-
-        for(String job : jobs)
-        {
-            i++;
-        }
-
-        this.setLayout(new GridLayout(i, 0));
-
-        BufferedImage image = null;
-        try{
-            image = ImageIO.read(new File(this.getImage()));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        JLabel labelImg = new JLabel(new ImageIcon(image));
-        labelImg.setVisible(true);
-        
-        JLabel personnalName = new JLabel(this.getName());
-        personnalName.setVisible(true);
-
-        JLabel personnalDesc = new JLabel(this.getDesc());
-        personnalDesc.setVisible(true);
-
-        this.add(labelImg);
-        this.add(personnalName);
-        this.add(personnalDesc);
-
-        for(String job : jobs)
-        {
-            JLabel competence = new JLabel(job);
-            this.add(competence);
-        }
+        this.setVisible(true);
     }
 }
