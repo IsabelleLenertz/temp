@@ -26,8 +26,10 @@ public class TeamView extends StageView {
         // generating the selectable panels for the persons
         // TODO test once the scenario is implemented in the model
         selectablePersons = new ArrayList<SelectablePersonPanel>();
+
         for (String persName : g.getPersonsList()) {
             SelectablePersonPanel persPan = new SelectablePersonPanel(persName, g);
+            persPan.setLayout(new GridBagLayout());
             selectablePersons.add(persPan);
             this.mainContent().add(persPan);
         }
@@ -41,7 +43,7 @@ public class TeamView extends StageView {
         for (SelectablePersonPanel persPan : selectablePersons) {
             persPan.update();
         }
-        // updating ressouce display
+        // updating resource display
         setResourceRestantes();
     }
 
