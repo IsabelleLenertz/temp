@@ -7,6 +7,7 @@ import observer.Observer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.Flow;
 
 /**
  * The stage's view
@@ -32,7 +33,11 @@ public abstract class StageView extends JPanel implements Observer {
 
     private JPanel sideInfos;
 
+    private JPanel panelTextButton;
+
     private JLabel text;
+
+    private JButton toMainMenu;
 
     private JButton confirm;
 
@@ -69,8 +74,8 @@ public abstract class StageView extends JPanel implements Observer {
         this.add(tools, gc);
         setSideInfos();
         this.add(sideInfos, gc);
-        setText();
-        this.add(text, gc);
+        setPanelTextButton();
+        this.add(panelTextButton, gc);
         setConfirm();
         this.add(confirm, gc);
 
@@ -122,6 +127,26 @@ public abstract class StageView extends JPanel implements Observer {
         return  sideInfos;
     }
 
+    protected void setPanelTextButton()
+    {
+        panelTextButton = new JPanel();
+        panelTextButton.setLayout(new GridBagLayout());
+        panelTextButton.setBackground(Color.BLACK);
+        panelTextButton.setVisible(true);
+
+        setText();
+        panelTextButton.add(text, gc);
+        setToMainMenu();
+        panelTextButton.add(toMainMenu, gc);
+
+        gc.gridx = 0;
+        gc.gridy = 1;
+        gc.gridwidth = 2;
+        gc.weighty = 0.1;
+        gc.weightx = 0.8;
+        gc.fill = GridBagConstraints.BOTH;
+    }
+
     protected void setText()
     {
         text = new JLabel("text");
@@ -130,9 +155,20 @@ public abstract class StageView extends JPanel implements Observer {
         text.setVisible(true);
 
         gc.gridx = 0;
-        gc.gridy = 1;
-        gc.gridwidth = 2;
-        gc.weighty = 0.1;
+        gc.gridy = 0;
+        gc.weightx = 0.8;
+        gc.fill = GridBagConstraints.BOTH;
+    }
+
+    public void setToMainMenu()
+    {
+        toMainMenu = new JButton("Main Menu");
+        toMainMenu.setBackground(Color.PINK);
+        toMainMenu.setVisible(true);
+
+        gc.gridx = 1;
+        gc.gridy = 0;
+        gc.weightx = 0.2;
         gc.fill = GridBagConstraints.BOTH;
     }
 
@@ -150,6 +186,7 @@ public abstract class StageView extends JPanel implements Observer {
 
         gc.gridx = 2;
         gc.gridy = 1;
+        gc.weightx = 0.1;
         gc.fill = GridBagConstraints.BOTH;
     }
 

@@ -69,7 +69,6 @@ public class MainWindow extends JFrame implements Observer {
             }
             panel.setSize(this.getSize());
             panel.revalidate();
-            System.out.println(this.getSize());
         }
         if (stage != null) {
             stage.update();
