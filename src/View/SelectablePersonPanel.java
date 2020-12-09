@@ -21,7 +21,7 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void update() {
-        // this.setState( this.getG().getPersonStatus(this.getSelectableName()));
+        this.setState( this.getG().getPersonStatus(this.getSelectableName()));
         super.update();
     }
 
@@ -30,7 +30,7 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void select() {
-        // this.getG().selectPerson(this.getSelectableName());
+        this.getG().selectPerson(this.getSelectableName());
     }
 
     /**
@@ -38,7 +38,7 @@ public class SelectablePersonPanel extends SelectablePanel {
      */
     @Override
     public void unselect() {
-        // this.getG().unselectPerson(this.getSelectableName());
+        this.getG().unselectPerson(this.getSelectableName());
     }
 
     /**
