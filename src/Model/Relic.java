@@ -16,7 +16,8 @@ public class Relic {
     private Integer value;
     private Boolean isFound = false;
     private Boolean isHighlighted = false;
-    private ArrayList<ExploitationTool> ExploitationToolsRequirement;
+    private ArrayList<ExploitationTool> exploitationToolsRequirement;
+    private ArrayList<ExcavationTool> excavationToolsRequirement;
 
     /**
      * Default constructor
@@ -24,10 +25,11 @@ public class Relic {
     public Relic() {
     }
 
-    public Relic(String name, String desc, ArrayList<ExploitationTool> exploitationToolsRequirement) {
+    public Relic(String name, String desc, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) {
         this.name = name;
         this.desc = desc;
-        ExploitationToolsRequirement = exploitationToolsRequirement;
+        this.exploitationToolsRequirement = exploitationToolsRequirement;
+        this.excavationToolsRequirement = excavationToolsRequirement;
     }
 
     /**
@@ -40,7 +42,7 @@ public class Relic {
      * @param value number of points
      * @throws Exception
      */
-    public Relic(String name, String desc, String img, ArrayList<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value, ArrayList<ExploitationTool> exploitationToolsRequirement) throws Exception {
+    public Relic(String name, String desc, String img, ArrayList<ExploitationTool> usedExploitationTool, Set<String> relicInformation, Integer value, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) throws Exception {
         this.name = name;
         this.desc = desc;
         this.f = img;
@@ -49,7 +51,8 @@ public class Relic {
         this.value = value;
         this.isFound = false;
         this.isHighlighted = false;
-        this.ExploitationToolsRequirement = exploitationToolsRequirement;
+        this.exploitationToolsRequirement = exploitationToolsRequirement;
+        this.excavationToolsRequirement = excavationToolsRequirement;
     }
 
     public String getName() {
@@ -101,7 +104,7 @@ public class Relic {
     public String analyse(ArrayList<ExploitationTool> usedExploitationTools) {
         StringBuilder res = new StringBuilder();
         for (ExploitationTool e: usedExploitationTools) {
-            for (ExploitationTool j: ExploitationToolsRequirement) {
+            for (ExploitationTool j: exploitationToolsRequirement) {
                 if (e.getName().equals(j.getName())){
                     res.append(e.getName()).append(" est le bon outil\n");
                     // TODO implement the value increment
@@ -127,11 +130,14 @@ public class Relic {
         isHighlighted = highlighted;
     }
 
+    public ArrayList<ExcavationTool> getExcavationToolsRequirement() {
+        return excavationToolsRequirement;
+    }
     public ArrayList<ExploitationTool> getExploitationToolsRequirement() {
-        return ExploitationToolsRequirement;
+        return exploitationToolsRequirement;
     }
     public void setExploitationToolsRequirement(ArrayList<ExploitationTool> exploitationToolsRequirement) {
-        ExploitationToolsRequirement = exploitationToolsRequirement;
+        exploitationToolsRequirement = exploitationToolsRequirement;
     }
 
 }
