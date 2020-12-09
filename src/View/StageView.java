@@ -100,6 +100,7 @@ public abstract class StageView extends JPanel implements Observer {
         gc.gridy = 0;
         gc.weightx = 1.5;
         gc.fill = GridBagConstraints.BOTH;
+        tools.setLayout(new BoxLayout(tools, BoxLayout.Y_AXIS));
     }
 
     protected void setSideInfos()
