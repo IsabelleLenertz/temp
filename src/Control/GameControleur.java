@@ -517,14 +517,13 @@ public class GameControleur {
      * @return Number of the game stage
      */
     public int getGameStage() {
-        // TODO get the number of the curent stage of the game
-        return 0;
+        return g.getCurrentStage();
     }
 
     /**
      * moves to the next window
      */
     public void nextStage() {
-        // TODO implement here
+        g.nextStage();
     }
 }
