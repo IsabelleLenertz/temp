@@ -1,7 +1,8 @@
 import Control.GameControleur;
 import Model.*;
-import View.MainWindow;
+import View.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -49,9 +50,11 @@ public class Main {
         Relic relic1 = new Relic("os", "matiere organique", exploitationTools);
         relics.add(relic1);
 
-        GameControleur g = new GameControleur(relics, personArrayList, excavationTools, exploitationTools);
+        GameControleur g = new GameControleur(new GameModel(relics, personArrayList, excavationTools, exploitationTools));
 
         MainWindow window = new MainWindow(g);
         g.getG().addObserver(window);
+        window.setMinimumSize(new Dimension(850, 650));
+
     }
 }

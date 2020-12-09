@@ -4,67 +4,75 @@ import Control.GameControleur;
 import observer.Observer;
 
 import javax.swing.*;
+import javax.xml.stream.Location;
+import java.awt.*;
 
 public class MainWindow extends JFrame implements Observer {
 
-    private JPanel stagePanel;
+    private JPanel panel;
     private GameControleur g;
     private StageView stage;
-    private int curentStage = -1;
+    private int currentStage = -1;
+    private GridBagConstraints gc;
 
     public MainWindow(GameControleur g) {
         this.g = g;
-        this.stagePanel = new JPanel();
-        this.add(stagePanel);
+        this.panel = new JPanel();
+        this.panel.setLayout(new BorderLayout());
+        panel.setVisible(true);
+
+        this.setSize(1000, 600);
+
+        this.add(panel);
         update();
+
         this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     @Override
     public void update() {
         int stageNumber = g.getGameStage();
 
-        if (stageNumber != curentStage) {
-            curentStage = stageNumber;
-            this.stagePanel.removeAll();
-            switch (curentStage) {
+        if (stageNumber != currentStage) {
+            currentStage = stageNumber;
+            panel.removeAll();
+            switch (currentStage) {
                 case 0:
                     this.stage = null;
                     MainMenuView mainMenu = new MainMenuView(g);
-                    mainMenu.setSize(this.getSize());
-                    stagePanel.add(mainMenu);
-                    stagePanel.setSize(this.getSize());
+                    panel.add(mainMenu, BorderLayout.CENTER);
+                    mainMenu.setVisible(true);
                     break;
                 case 1:
                     this.stage = new TeamView(g);
-                    this.stage.setSize(this.getSize());
-                    stagePanel.add(stage);
-                    stagePanel.setSize(this.getSize());
+                    panel.add(stage, BorderLayout.CENTER);
+                    this.stage.setVisible(true);
                     break;
                 case 2:
                     this.stage = new ExcavationView(g);
-                    this.stage.setSize(this.getSize());
-                    stagePanel.add(stage);
-                    stagePanel.setSize(this.getSize());
+                    panel.add(stage, BorderLayout.CENTER);
+                    this.stage.setVisible(true);
                     break;
                 case 3:
                     this.stage = new ExploitationView(g);
-                    this.stage.setSize(this.getSize());
-                    stagePanel.add(stage);
-                    stagePanel.setSize(this.getSize());
+                    panel.add(stage, BorderLayout.CENTER);
+                    this.stage.setVisible(true);
                     break;
                 case 4:
                     this.stage = null;
-                    // stagePanel.add(new ResultsView(g));
+                    ResultsView vueScore = new ResultsView(g);
+                    panel.add(vueScore, BorderLayout.CENTER);
+                    vueScore.setVisible(true);
                     break;
             }
-            stagePanel.revalidate();
+            panel.setSize(this.getSize());
+            panel.revalidate();
+            System.out.println(this.getSize());
         }
         if (stage != null) {
             stage.update();
         }
     }
 }
-
-
-
