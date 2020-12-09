@@ -30,18 +30,23 @@ public class MainWindow extends JFrame implements Observer {
             switch (curentStage) {
                 case 0:
                     this.stage = null;
-                    stagePanel.add(new MainMenuView(g));
+                    MainMenuView mainMenu = new MainMenuView(g);
+                    mainMenu.setSize(this.getSize());
+                    stagePanel.add(mainMenu);
                     break;
                 case 1:
                     this.stage = new TeamView(g);
+                    this.stage.setSize(this.getSize());
                     stagePanel.add(stage);
                     break;
                 case 2:
                     this.stage = new ExcavationView(g);
+                    this.stage.setSize(this.getSize());
                     stagePanel.add(stage);
                     break;
                 case 3:
                     this.stage = new ExploitationView(g);
+                    this.stage.setSize(this.getSize());
                     stagePanel.add(stage);
                     break;
                 case 4:
