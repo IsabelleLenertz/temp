@@ -16,8 +16,8 @@ public class GameControleur {
     /**
      * Default constructor
      */
-    public GameControleur() {
-        GameModel g = new GameModel();
+    public GameControleur(ArrayList<Relic> relic, ArrayList<Person> person, ArrayList<ExcavationTool> excavationTool, ArrayList<ExploitationTool> exploitationTool) {
+        GameModel g = new GameModel(relic, person, excavationTool,exploitationTool);
     }
 
     /**
