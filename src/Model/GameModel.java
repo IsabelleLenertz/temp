@@ -125,10 +125,12 @@ public class GameModel implements Subject {
                 // starting team selection
                 break;
             case 2:
+                checkExcavationResources();
                 // starting excavation
                 break;
             case 3:
                 checkFoundRelics();
+                checkExploitationResources();
                 // starting exploitation
                 break;
             case 4:
@@ -295,18 +297,7 @@ public class GameModel implements Subject {
             }
         }
         // updating available tools
-        ArrayList<JobEnum> availableJobs = getAvailableExcavationJobs();
-        for (ExcavationTool tool : excavationTools) {
-            if (tool.getStatus() == State.UNSELECTED) {
-                boolean requirementMet = true;
-                ArrayList<JobEnum> requiredJobs = tool.getRequirements();
-                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
-                    requirementMet = availableJobs.contains(requiredJobs.get(i));
-                }
-                if (!requirementMet)
-                    tool.setStatus(State.UNAVAILABLE);
-            }
-        }
+        checkExcavationResources();
         // sending an update to views
         notifyObservers();
     }
@@ -320,18 +311,7 @@ public class GameModel implements Subject {
             }
         }
         // updating available tools
-        ArrayList<JobEnum> availableJobs = getAvailableExcavationJobs();
-        for (ExcavationTool tool : excavationTools) {
-            if (tool.getStatus() == State.UNAVAILABLE) {
-                boolean requirementMet = true;
-                ArrayList<JobEnum> requiredJobs = tool.getRequirements();
-                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
-                    requirementMet = availableJobs.contains(requiredJobs.get(i));
-                }
-                if (requirementMet)
-                    tool.setStatus(State.UNSELECTED);
-            }
-        }
+        checkExcavationResources();
         // sending an update to views
         notifyObservers();
     }
@@ -345,18 +325,7 @@ public class GameModel implements Subject {
             }
         }
         // updating available tools
-        ArrayList<JobEnum> availableJobs = getAvailableExploitationJobs();
-        for (ExploitationTool tool : exploitationTools) {
-            if (tool.getStatus() == State.UNSELECTED) {
-                boolean requirementMet = true;
-                ArrayList<JobEnum> requiredJobs = tool.getRequirement();
-                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
-                    requirementMet = availableJobs.contains(requiredJobs.get(i));
-                }
-                if (!requirementMet)
-                    tool.setStatus(State.UNAVAILABLE);
-            }
-        }
+        checkExploitationResources();
         // sending an update to views
         notifyObservers();
     }
@@ -370,9 +339,48 @@ public class GameModel implements Subject {
             }
         }
         // updating available tools
+        checkExploitationResources();
+        // sending an update to views
+        notifyObservers();
+    }
+
+    private void checkExcavationResources() {
+        ArrayList<JobEnum> availableJobs = getAvailableExcavationJobs();
+        for (ExcavationTool tool : excavationTools) {
+            if (tool.getStatus() == State.UNSELECTED) {
+                boolean requirementMet = true;
+                ArrayList<JobEnum> requiredJobs = tool.getRequirements();
+                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
+                    requirementMet = availableJobs.contains(requiredJobs.get(i));
+                }
+                if (!requirementMet)
+                    tool.setStatus(State.UNAVAILABLE);
+            }
+            else if (tool.getStatus() == State.UNAVAILABLE) {
+                boolean requirementMet = true;
+                ArrayList<JobEnum> requiredJobs = tool.getRequirements();
+                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
+                    requirementMet = availableJobs.contains(requiredJobs.get(i));
+                }
+                if (requirementMet)
+                    tool.setStatus(State.UNSELECTED);
+            }
+        }
+    }
+
+    private void checkExploitationResources() {
         ArrayList<JobEnum> availableJobs = getAvailableExploitationJobs();
         for (ExploitationTool tool : exploitationTools) {
-            if (tool.getStatus() == State.UNAVAILABLE) {
+            if (tool.getStatus() == State.UNSELECTED) {
+                boolean requirementMet = true;
+                ArrayList<JobEnum> requiredJobs = tool.getRequirement();
+                for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
+                    requirementMet = availableJobs.contains(requiredJobs.get(i));
+                }
+                if (!requirementMet)
+                    tool.setStatus(State.UNAVAILABLE);
+            }
+            else if (tool.getStatus() == State.UNAVAILABLE) {
                 boolean requirementMet = true;
                 ArrayList<JobEnum> requiredJobs = tool.getRequirement();
                 for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
@@ -382,8 +390,6 @@ public class GameModel implements Subject {
                     tool.setStatus(State.UNSELECTED);
             }
         }
-        // sending an update to views
-        notifyObservers();
     }
 
     public void highlightPerson(String personName, boolean highlight) {
