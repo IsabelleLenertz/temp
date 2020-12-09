@@ -18,7 +18,10 @@ public class Main {
         requirement1.add(JobEnum.JOB_ENUM2);
 
         ExploitationTool exploitationTool1 = new ExploitationTool("pioche", "objet de fouille", requirement1);
+
         ExcavationTool excavationTool1 = new ExcavationTool("carbonne 14", "datation des composants", requirement1);
+        ExcavationTool excavationTool2 = new ExcavationTool("methode 2", "une methode", requirement1);
+        ExcavationTool excavationTool3 = new ExcavationTool("outil", "un outil", requirement1);
 
         Person person1 = new Person("James", "Un mec", requirement1);
         Person person2 = new Person("James1", "Un mec", requirement1);
@@ -34,7 +37,11 @@ public class Main {
 
 
         excavationTools.add(excavationTool1);
+        excavationTools.add(excavationTool2);
+        excavationTools.add(excavationTool3);
+
         exploitationTools.add(exploitationTool1);
+
         personArrayList.add(person1);
         personArrayList.add(person2);
         personArrayList.add(person3);
@@ -47,7 +54,7 @@ public class Main {
         personArrayList.add(person10);
         personArrayList.add(person11);
 
-        Relic relic1 = new Relic("os", "matiere organique", exploitationTools);
+        Relic relic1 = new Relic("os", "matiere organique", exploitationTools, excavationTools);
         relics.add(relic1);
 
         GameControleur g = new GameControleur(new GameModel(relics, personArrayList, excavationTools, exploitationTools));
@@ -55,6 +62,5 @@ public class Main {
         MainWindow window = new MainWindow(g);
         g.getG().addObserver(window);
         window.setMinimumSize(new Dimension(850, 650));
-
     }
 }
