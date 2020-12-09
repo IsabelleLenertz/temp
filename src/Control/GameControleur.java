@@ -16,8 +16,8 @@ public class GameControleur {
     /**
      * Default constructor
      */
-    public GameControleur(ArrayList<Relic> relic, ArrayList<Person> person, ArrayList<ExcavationTool> excavationTool, ArrayList<ExploitationTool> exploitationTool) {
-        this.g = new GameModel(relic, person, excavationTool,exploitationTool);
+    public GameControleur(GameModel game) {
+        this.g = game;
     }
 
     /**
@@ -25,13 +25,7 @@ public class GameControleur {
      * @param personName name of the person who want highlight
      */
     public void highlightPerson(String personName, boolean highlight) {
-        ArrayList<Person> persons = g.getPerson();
-        for (Person p : persons) {
-            if (personName.equals(p.getName())) {
-                p.setHighlighted(highlight);
-                break;
-            }
-        }
+        g.highlightPerson(personName, highlight);
     }
 
     /**
@@ -39,13 +33,7 @@ public class GameControleur {
      * @param excavationToolName name of the excavation tool who want the name
      */
     public void highlightExcavationTool(String excavationToolName, boolean highlight) {
-        ArrayList<ExcavationTool> list = g.getExcavationTool();
-        for (ExcavationTool e : list) {
-            if (excavationToolName.equals(e.getName())) {
-                e.setHighligt(highlight);
-                break;
-            }
-        }
+        g.highlightExcavationTool(excavationToolName, highlight);
     }
 
     /**
@@ -53,13 +41,7 @@ public class GameControleur {
      * @param exploitationToolName name of the exploitation tool who want the name
      */
     public void highlightExploitationTool(String exploitationToolName, boolean highlight) {
-        ArrayList<ExploitationTool> list = g.getExploitationTool();
-        for (ExploitationTool e : list) {
-            if (exploitationToolName.equals(e.getName())) {
-                e.setHighlighted(highlight);
-                break;
-            }
-        }
+        g.highlightExploitationTool(exploitationToolName, highlight);
     }
 
     /**
@@ -67,25 +49,14 @@ public class GameControleur {
      * @param relicName name of the relic who want highlight
      */
     public void highlightRelic(String relicName, boolean highlight) {
-        ArrayList<Relic> list = g.getRelic();
-        for (Relic e : list) {
-            if (relicName.equals(e.getName())) {
-                e.setHighlighted(highlight);
-                break;
-            }
-        }
+        g.highlightRelic(relicName, highlight);
     }
 
     /**
      * remove all the highlight from the interface
      */
     public void clearHighlight() {
-        ArrayList<Person> listp = g.getPerson();
-        for (Person p : listp) {
-            if (p.isHighlighted()) {
-                p.setHighlighted(false);
-            }
-        }
+        g.clearHighlight();
     }
 
     /**

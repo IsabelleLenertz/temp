@@ -384,4 +384,60 @@ public class GameModel implements Subject {
         // sending an update to views
         notifyObservers();
     }
+
+    public void highlightPerson(String personName, boolean highlight) {
+        ArrayList<Person> persons = getPerson();
+        for (Person p : persons) {
+            if (personName.equals(p.getName())) {
+                p.setHighlighted(highlight);
+                break;
+            }
+        }
+        notifyObservers();
+    }
+
+    public void highlightExcavationTool(String excavationToolName, boolean highlight) {
+        ArrayList<ExcavationTool> list = getExcavationTool();
+        for (ExcavationTool e : list) {
+            if (excavationToolName.equals(e.getName())) {
+                e.setHighligt(highlight);
+                break;
+            }
+        }
+        notifyObservers();
+
+    }
+
+    public void highlightExploitationTool(String exploitationToolName, boolean highlight) {
+        ArrayList<ExploitationTool> list = getExploitationTool();
+        for (ExploitationTool e : list) {
+            if (exploitationToolName.equals(e.getName())) {
+                e.setHighlighted(highlight);
+                break;
+            }
+        }
+        notifyObservers();
+    }
+
+    public void highlightRelic(String relicName, boolean highlight) {
+        ArrayList<Relic> list = getRelic();
+        for (Relic e : list) {
+            if (relicName.equals(e.getName())) {
+                e.setHighlighted(highlight);
+                break;
+            }
+        }
+        notifyObservers();
+    }
+
+    public void clearHighlight() {
+        ArrayList<Person> listp = getPerson();
+        for (Person p : listp) {
+            if (p.isHighlighted()) {
+                p.setHighlighted(false);
+            }
+        }
+        notifyObservers();
+    }
+
 }
