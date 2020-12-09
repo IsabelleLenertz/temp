@@ -18,24 +18,6 @@ public class ToolsInfos extends SideInfos {
     public ToolsInfos(String name, String desc, ArrayList<String> Requirement) {
         super(name, desc);
         this.requirement = Requirement;
-    }
-
-    /**
-     * Objects needed to discover relics
-     */
-    private ArrayList<String> requirement;
-
-    public ArrayList<String> getRequirement() {
-        return requirement;
-    }
-
-    public void setRequirement(ArrayList<String> requirement) {
-        this.requirement = requirement;
-    }
-
-    @Override
-    public void setDisplay()
-    {
         int i = 2;
 
         for(String job : requirement)
@@ -59,6 +41,24 @@ public class ToolsInfos extends SideInfos {
             JLabel req = new JLabel(job);
             this.add(req);
         }
+    }
 
+    /**
+     * Objects needed to discover relics
+     */
+    private ArrayList<String> requirement;
+
+    public ArrayList<String> getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(ArrayList<String> requirement) {
+        this.requirement = requirement;
+    }
+
+    @Override
+    public void setDisplay()
+    {
+        this.setVisible(true);
     }
 }
