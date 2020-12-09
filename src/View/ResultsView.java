@@ -26,9 +26,9 @@ public class ResultsView extends JPanel {
 
     private JPanel scorePanel;
 
-    private JButton quitButton;
-
     private JButton toMainMenuButton;
+
+    private JButton quitButton;
 
     public void setDisplay()
     {
@@ -43,10 +43,10 @@ public class ResultsView extends JPanel {
         this.add(relicPanel, gc);
         setScorePanel();
         this.add(scorePanel, gc);
-        setQuitButton();
-        this.add(quitButton, gc);
         setToMainMenuButton();
         this.add(toMainMenuButton, gc);
+        setQuitButton();
+        this.add(quitButton, gc);
 
         this.setVisible(true);
     }
@@ -59,9 +59,9 @@ public class ResultsView extends JPanel {
 
         gc.gridx = 0;
         gc.gridy = 0;
-        gc.weightx = 0.3;
+        gc.weightx = 0.4;
         gc.gridwidth = 1;
-        gc.gridheight = 2;
+        gc.gridheight = 3;
         gc.fill = GridBagConstraints.BOTH;
     }
 
@@ -73,22 +73,9 @@ public class ResultsView extends JPanel {
 
         gc.gridx = 1;
         gc.gridy = 0;
-        gc.weightx = 0.7;
+        gc.weightx = 0.6;
         gc.weighty = 0.9;
         gc.gridwidth = 2;
-        gc.gridheight = 1;
-        gc.fill = GridBagConstraints.BOTH;
-    }
-
-    public void setQuitButton()
-    {
-        quitButton = new JButton("Quit");
-        quitButton.setBackground(Color.GRAY);
-        quitButton.setVisible(true);
-
-        gc.gridx = 1;
-        gc.gridy = 2;
-        gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;
     }
@@ -99,8 +86,23 @@ public class ResultsView extends JPanel {
         toMainMenuButton.setBackground(Color.PINK);
         toMainMenuButton.setVisible(true);
 
+        gc.gridx = 1;
+        gc.gridy = 2;
+        gc.weighty = 0.05;
+        gc.gridwidth = 1;
+        gc.gridheight = 1;
+        gc.fill = GridBagConstraints.BOTH;
+    }
+
+    public void setQuitButton()
+    {
+        quitButton = new JButton("Quit");
+        quitButton.setBackground(Color.GRAY);
+        quitButton.setVisible(true);
+
         gc.gridx = 2;
         gc.gridy = 2;
+        gc.weighty = 0.05;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;

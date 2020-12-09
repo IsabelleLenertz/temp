@@ -21,9 +21,7 @@ public abstract class StageView extends JPanel implements Observer {
     public StageView(GameControleur g)
     {
         this.g = g;
-        this.setLayout(new GridBagLayout());
         setDisplay();
-        this.setVisible(true);
     }
 
     private GameControleur g;
@@ -58,6 +56,9 @@ public abstract class StageView extends JPanel implements Observer {
 
     public void setDisplay()
     {
+        this.setLayout(new GridBagLayout());
+        this.setVisible(true);
+
         gc = new GridBagConstraints();
         this.setBackground(Color.ORANGE);
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
