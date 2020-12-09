@@ -203,5 +203,6 @@ public abstract class StageView extends JPanel implements Observer {
 
         setResourceRestantes();
         sideInfos.revalidate();
+        sideInfos.repaint();
     }
 }
