@@ -12,12 +12,12 @@ public class MainWindow extends JFrame implements Observer {
     private StageView stage;
     private int curentStage = -1;
 
-    public MainWindow(GameControleur g)
-    {
+    public MainWindow(GameControleur g) {
         this.g = g;
         this.stagePanel = new JPanel();
         this.add(stagePanel);
         update();
+        this.setVisible(true);
     }
 
     @Override
@@ -37,11 +37,11 @@ public class MainWindow extends JFrame implements Observer {
                     stagePanel.add(stage);
                     break;
                 case 2:
-                    this.stage = new TeamView(g);
+                    this.stage = new ExcavationView(g);
                     stagePanel.add(stage);
                     break;
                 case 3:
-                    this.stage = new TeamView(g);
+                    this.stage = new ExploitationView(g);
                     stagePanel.add(stage);
                     break;
                 case 4:
@@ -56,3 +56,6 @@ public class MainWindow extends JFrame implements Observer {
         }
     }
 }
+
+
+
