@@ -329,7 +329,7 @@ public class GameControleur {
     }
 
     /**
-     * getter of job
+     * getter of jobs that are still unused
      * @return list of available jobs
      */
     public ArrayList<String> getAvailableJobs() {
@@ -343,6 +343,29 @@ public class GameControleur {
                 break;
             case 3:
                 for (JobEnum job : g.getAvailableExploitationJobs()) {
+                    // TODO reformat the string to not be all capital letters
+                    availableJobs.add(job.toString());
+                }
+                break;
+        }
+        return availableJobs;
+    }
+
+    /**
+     * getter of jobs that have already been used in current selection
+     * @return list of used jobs
+     */
+    public ArrayList<String> getUsedJobs() {
+        ArrayList<String> availableJobs = new ArrayList<>();
+        switch (g.getCurrentStage()) {
+            case 2:
+                for (JobEnum job : g.getUsedJobsForExcavation()) {
+                    // TODO reformat the string to not be all capital letters
+                    availableJobs.add(job.toString());
+                }
+                break;
+            case 3:
+                for (JobEnum job : g.getUsedJobsForExploitation()) {
                     // TODO reformat the string to not be all capital letters
                     availableJobs.add(job.toString());
                 }
