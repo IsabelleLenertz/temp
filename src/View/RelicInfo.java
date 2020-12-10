@@ -38,26 +38,65 @@ public class RelicInfo extends SideInfos {
     @Override
     public void setDisplay() {
 
-        this.setLayout(new GridLayout(3, 0));
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gc.fill = GridBagConstraints.BOTH;
 
-        BufferedImage image = null;
+        BufferedImage image;
+        JLabel labelImg;
+
         try{
             image = ImageIO.read(new File(this.getImage()));
+            labelImg = new JLabel(new ImageIcon(image));
+            labelImg.setVisible(true);
+
+            gc.weighty = 0.1;
+            gc.gridx = 0;
+            gc.gridy = 0;
+            this.add(labelImg, gc);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            try {
+                image = ImageIO.read(new File("src/img/person.jpg"));
+                labelImg = new JLabel(new ImageIcon(image));
+                labelImg.setVisible(true);
+
+                gc.weighty = 0.1;
+                gc.gridx = 0;
+                gc.gridy = 0;
+                this.add(labelImg, gc);
+            } catch (IOException error){
+                System.out.println(error.getMessage());
+            }
         }
-        JLabel labelImg = new JLabel(new ImageIcon(image));
-        labelImg.setVisible(true);
+        catch (NullPointerException np) {
+            try {
+                image = ImageIO.read(new File("src/img/person.jpg"));
+                labelImg = new JLabel(new ImageIcon(image));
+                labelImg.setVisible(true);
 
-        JLabel personnalName = new JLabel(this.getName());
-        personnalName.setVisible(true);
+                gc.weighty = 0.1;
+                gc.gridx = 0;
+                gc.gridy = 0;
+                this.add(labelImg, gc);
+            } catch (IOException error){
+                System.out.println(error.getMessage());
+            }
+        }
 
-        JLabel personnalDesc = new JLabel(this.getDesc());
-        personnalDesc.setVisible(true);
+        JLabel relicName = new JLabel(this.getName());
+        relicName.setVisible(true);
 
-        this.add(labelImg);
-        this.add(personnalName);
-        this.add(personnalDesc);
+        JLabel relicDesc = new JLabel(this.getDesc());
+        relicDesc.setVisible(true);
 
+        gc.weighty = 0.2;
+        gc.gridy = 1;
+        relicName.setHorizontalAlignment(JLabel.CENTER);
+        this.add(relicName, gc);
+
+        gc.gridy = 2;
+        relicDesc.setHorizontalAlignment(JLabel.CENTER);
+        this.add(relicDesc, gc);
     }
 }
