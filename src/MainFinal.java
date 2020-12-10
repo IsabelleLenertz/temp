@@ -49,7 +49,7 @@ public class MainFinal {
         ArrayList<JobEnum> tobyJobs = new ArrayList<>();
         tobyJobs.add(bénévoles);
         tobyJobs.add(géoarchéologue);
-        Person toby = new Person("Toby", "C'est pas la taille qui compte, mais les gros engins sont les meilleurs",
+        Person toby = new Person("Toby", "Mais au fond est ce si important ce terrain ?",
                 tobyJobs, "./src/img/person.jpg");
 
         // Exploitation tools / method creation
@@ -101,11 +101,11 @@ public class MainFinal {
 
         ArrayList<ExcavationTool> terrainExcavationListRelic = new ArrayList<>();
         ArrayList<ExploitationTool> terrainExploitationRelic = new ArrayList<>();
-        ceramicExploitationRelic.add(stratigraphy);
+        terrainExploitationRelic.add(stratigraphy);
         ArrayList<String> terrainInfo = new ArrayList<>();
-        ceramicInfo.add("Avec ces renseignements on peut maintenant daté les couches");
+        terrainInfo.add("Avec ces renseignements on peut maintenant daté les couches");
         ArrayList<Integer> terrainValues = new ArrayList<>();
-        ceramicValues.add(15);
+        terrainValues.add(15);
 
         Relic terrain = new Relic("Terrain", "", "./super/chemin",
                 0, terrainInfo, terrainValues, terrainExploitationRelic, terrainExcavationListRelic);
@@ -119,9 +119,11 @@ public class MainFinal {
         exploitationTools.add(carbone14);
         exploitationTools.add(datingByFluid);
         exploitationTools.add(stratigraphy);
+
         personArrayList.add(alice);
         personArrayList.add(james);
         personArrayList.add(bob);
+        personArrayList.add(toby);
 
         relics.add(ceramic);
         relics.add(os);
