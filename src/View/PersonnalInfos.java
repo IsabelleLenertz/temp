@@ -38,25 +38,29 @@ public class PersonnalInfos extends SideInfos {
             i++;
         }
 
-        /*BufferedImage image = null;
+        BufferedImage image = null;
         try{
             image = ImageIO.read(new File(this.getImage()));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         JLabel labelImg = new JLabel(new ImageIcon(image));
-        labelImg.setVisible(true);*/
+        labelImg.setVisible(true);
 
         JLabel personnalName = new JLabel(this.getName());
         personnalName.setVisible(true);
+        personnalName.setHorizontalAlignment(JLabel.CENTER);
 
         JLabel personnalDesc = new JLabel(this.getDesc());
         personnalDesc.setVisible(true);
+        personnalDesc.setHorizontalAlignment(JLabel.CENTER);
 
+        gc.weighty = 0.1;
         gc.gridx = 0;
         gc.gridy = 0;
-        //this.add(labelImg, gc);
+        this.add(labelImg, gc);
 
+        gc.weighty = 0.2;
         gc.gridy = 1;
         this.add(personnalName, gc);
         gc.gridy = 2;
@@ -66,6 +70,7 @@ public class PersonnalInfos extends SideInfos {
         {
             gc.gridy++;
             JLabel competence = new JLabel(job);
+            competence.setHorizontalAlignment(JLabel.CENTER);
             this.add(competence, gc);
         }
     }
