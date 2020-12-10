@@ -182,7 +182,7 @@ public class GameModel implements Subject {
         return jobs;
     }
 
-    private ArrayList<JobEnum> getUsedJobsForExcavation() {
+    public ArrayList<JobEnum> getUsedJobsForExcavation() {
         ArrayList<JobEnum> jobs = new ArrayList<>();
         for (ExcavationTool excavationTool : getSelectedExcavationTools()) {
             for (JobEnum job : excavationTool.getRequirements()) {
@@ -192,7 +192,7 @@ public class GameModel implements Subject {
         return jobs;
     }
 
-    private ArrayList<JobEnum> getUsedJobsForExploitation() {
+    public ArrayList<JobEnum> getUsedJobsForExploitation() {
         ArrayList<JobEnum> jobs = new ArrayList<>();
         for (ExploitationTool exploitationTool : getSelectedExploitationTools()) {
             for (JobEnum job : exploitationTool.getRequirement()) {

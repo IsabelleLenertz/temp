@@ -50,11 +50,13 @@ public class TeamView extends StageView {
     public void setResourceRestantes()
     {
         int nb = this.getG().getAvailableHireCount();
-        JLabel nbHireCount = new JLabel("Vous pouvez encore engager " + nb + " personnes !");
+        JLabel nbHireCount = new JLabel("<html><body style='box-shadow: inset 0 0 10px #000000;text-align: center;align-self: center;'><h3>Vous pouvez encore engager</h3><h1 style='font-size: 75px'>" + nb + "</h1><h2>personnes !</h2>", JLabel.CENTER);
+        nbHireCount.setVerticalAlignment(JLabel.CENTER);
         nbHireCount.setVisible(true);
 
         this.resources().removeAll();
-        this.resources().add(nbHireCount);
+        this.resources().setLayout(new BorderLayout());
+        this.resources().add(nbHireCount, BorderLayout.CENTER);
         this.resources().revalidate();
     }
 
