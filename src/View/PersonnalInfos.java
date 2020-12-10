@@ -31,21 +31,46 @@ public class PersonnalInfos extends SideInfos {
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.fill = GridBagConstraints.BOTH;
 
-        int i = 3;
+        BufferedImage image;
+        JLabel labelImg;
 
-        for(String job : jobs)
-        {
-            i++;
-        }
-
-        BufferedImage image = null;
-        try{
+        try {
             image = ImageIO.read(new File(this.getImage()));
+            labelImg = new JLabel(new ImageIcon(image));
+            labelImg.setVisible(true);
+
+            gc.weighty = 0.1;
+            gc.gridx = 0;
+            gc.gridy = 0;
+            this.add(labelImg, gc);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            try {
+                 image = ImageIO.read(new File("src/img/person.jpg"));
+                 labelImg = new JLabel(new ImageIcon(image));
+                 labelImg.setVisible(true);
+
+                 gc.weighty = 0.1;
+                 gc.gridx = 0;
+                 gc.gridy = 0;
+            this.add(labelImg, gc);
+            } catch (IOException error) {
+                System.out.println(error.getMessage());
+            }
         }
-        JLabel labelImg = new JLabel(new ImageIcon(image));
-        labelImg.setVisible(true);
+        catch (NullPointerException np) {
+            try {
+                image = ImageIO.read(new File("src/img/person.jpg"));
+                labelImg = new JLabel(new ImageIcon(image));
+                labelImg.setVisible(true);
+
+                gc.weighty = 0.1;
+                gc.gridx = 0;
+                gc.gridy = 0;
+                this.add(labelImg, gc);
+            } catch (IOException error){
+                System.out.println(error.getMessage());
+            }
+        }
 
         JLabel personnalName = new JLabel(this.getName());
         personnalName.setVisible(true);
@@ -55,14 +80,10 @@ public class PersonnalInfos extends SideInfos {
         personnalDesc.setVisible(true);
         personnalDesc.setHorizontalAlignment(JLabel.CENTER);
 
-        gc.weighty = 0.1;
-        gc.gridx = 0;
-        gc.gridy = 0;
-        this.add(labelImg, gc);
-
         gc.weighty = 0.2;
         gc.gridy = 1;
         this.add(personnalName, gc);
+
         gc.gridy = 2;
         this.add(personnalDesc, gc);
 

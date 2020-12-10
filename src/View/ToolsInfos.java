@@ -18,28 +18,64 @@ public class ToolsInfos extends SideInfos {
     public ToolsInfos(String name, String desc, ArrayList<String> Requirement) {
         super(name, desc);
         this.requirement = Requirement;
-        int i = 2;
 
-        for(String job : requirement)
-        {
-            i++;
-        }
-
-        this.setLayout(new GridLayout(i, 0));
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gc.fill = GridBagConstraints.BOTH;
 
         JLabel toolName = new JLabel(this.getName());
         toolName.setVisible(true);
+        toolName.setHorizontalAlignment(JLabel.CENTER);
 
         JLabel toolDesc = new JLabel(this.getDesc());
         toolDesc.setVisible(true);
+        toolDesc.setHorizontalAlignment(JLabel.CENTER);
 
-        this.add(toolName);
-        this.add(toolDesc);
+        JLabel requis = new JLabel("Requis : ");
+        requis.setVisible(true);
+        requis.setHorizontalAlignment(JLabel.LEFT);
+        requis.setVerticalAlignment(JLabel.BOTTOM);
 
-        for(String job : requirement)
+        if(requirement.isEmpty())
         {
-            JLabel req = new JLabel(job);
-            this.add(req);
+            gc.weightx = 1;
+            gc.weighty = 0.1;
+            gc.gridx = 0;
+            gc.gridy = 0;
+            this.add(toolName, gc);
+
+            gc.gridy = 1;
+            gc.weighty = 0.9;
+            toolDesc.setVerticalAlignment(JLabel.TOP);
+            this.add(toolDesc, gc);
+        }
+        else
+        {
+            gc.weightx = 1;
+            gc.weighty = 0.25;
+            gc.gridx = 0;
+            gc.gridy = 0;
+            this.add(toolName, gc);
+
+            gc.gridy = 1;
+            gc.weighty = 0.1;
+            this.add(toolDesc, gc);
+
+            gc.gridy = 2;
+            gc.weighty = 0;
+            this.add(requis, gc);
+
+            //TODO GERER PLUSIEURS JOBS
+            for(String job : requirement)
+            {
+                JLabel req = new JLabel(job);
+                gc.gridy++;
+                gc.weighty = 0.75;
+                req.setHorizontalAlignment(JLabel.CENTER);
+                req.setVerticalAlignment(JLabel.TOP);
+                this.add(req, gc);
+            }
         }
     }
 
