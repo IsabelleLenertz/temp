@@ -25,7 +25,17 @@ public class Relic {
     /**
      *
      */
-    public Relic(String name, String desc, String img, Integer baseValue, ArrayList<String> relicInformation, ArrayList<Integer> infoValues, ArrayList<ExploitationTool> exploitationToolsRequirement, ArrayList<ExcavationTool> excavationToolsRequirement) {
+    public Relic(String name,
+                 String desc,
+                 String img,
+                 Integer baseValue,
+                 ArrayList<String> relicInformation,
+                 ArrayList<Integer> infoValues,
+                 ArrayList<ExploitationTool> exploitationToolsRequirement,
+                 ArrayList<ExcavationTool> excavationToolsRequirement
+    ) throws Exception {
+        if (relicInformation.size() != infoValues.size() || relicInformation.size() != exploitationToolsRequirement.size())
+            throw new Exception("Can not create the " + name + "relic, the size of relicInformation, infoValues and exploitationToolsRequirement must be the same");
         this.name = name;
         this.desc = desc;
         this.imgPath = img;
