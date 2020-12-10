@@ -4,6 +4,7 @@ import Control.GameControleur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * The view that displays the results at the end of the game
@@ -16,6 +17,21 @@ public class ResultsView extends JPanel {
     public ResultsView(GameControleur g) {
         this.g = g;
         setDisplay();
+        // dynamic generation of the game results display
+        // list of the found relics
+        relicPanel.add(new JLabel("Liste des reliques trouvées :"));
+        ArrayList<String> foundRelics = g.getFoundRelicsList();
+        for (String relicName : foundRelics) {
+            relicPanel.add(new JLabel(relicName));
+        }
+        // Report generation
+        scorePanel.add(new JLabel("Rapport de fouille"));
+        for (String relicName : foundRelics) {
+            scorePanel.add(new JLabel(relicName + " :"));
+            scorePanel.add(new JLabel(g.analyzeRelic(relicName)));
+        }
+        // point display
+        scorePanel.add(new JLabel("Vous avez obtenu " + g.countPoints() + " points, recommencez et tentez de faire mieux !"));
     }
 
     private GameControleur g;
@@ -56,6 +72,7 @@ public class ResultsView extends JPanel {
         relicPanel = new JPanel();
         relicPanel.setBackground(Color.RED);
         relicPanel.setVisible(true);
+        relicPanel.setLayout(new BoxLayout(relicPanel, BoxLayout.Y_AXIS));
 
         gc.gridx = 0;
         gc.gridy = 0;
@@ -70,6 +87,7 @@ public class ResultsView extends JPanel {
         scorePanel = new JPanel();
         scorePanel.setBackground(Color.BLUE);
         scorePanel.setVisible(true);
+        scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.Y_AXIS));
 
         gc.gridx = 1;
         gc.gridy = 0;
