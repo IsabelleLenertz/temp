@@ -149,15 +149,27 @@ public abstract class StageView extends JPanel implements Observer {
 
     protected void setText()
     {
-        text = new JLabel("text");
-        text.setBackground(Color.CYAN);
-        text.setOpaque(true);
-        text.setVisible(true);
+        initText();
+        getText().setVisible(true);
 
         gc.gridx = 0;
         gc.gridy = 0;
         gc.weightx = 0.8;
         gc.fill = GridBagConstraints.BOTH;
+    }
+
+    public void initText() {
+        setText(new JLabel("Placeholder text"));
+        getText().setBackground(Color.CYAN);
+        getText().setOpaque(true);
+    }
+
+    public void setText(JLabel stageTitle) {
+        this.text = stageTitle;
+    }
+
+    public JLabel getText() {
+        return text;
     }
 
     public void setToMainMenu()
