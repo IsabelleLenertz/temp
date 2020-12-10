@@ -87,6 +87,7 @@ public abstract class StageView extends JPanel implements Observer {
         resource = new JPanel();
         resource.setBackground(Color.RED);
         resource.setVisible(true);
+        resource.setLayout(new BoxLayout(resource, BoxLayout.Y_AXIS));
 
         gc.gridx = 0;
         gc.gridy = 0;
