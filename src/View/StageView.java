@@ -205,12 +205,6 @@ public abstract class StageView extends JPanel implements Observer {
 
         if(side != null)
         {
-            gc.gridx = 0;
-            gc.gridy = 0;
-            gc.weightx = 1;
-            gc.weighty = 1;
-            gc.anchor = GridBagConstraints.FIRST_LINE_START;
-            gc.fill = GridBagConstraints.BOTH;
             sideInfos.add(side, BorderLayout.CENTER);
         }
 
