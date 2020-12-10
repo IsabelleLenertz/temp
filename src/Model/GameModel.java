@@ -443,7 +443,7 @@ public class GameModel implements Subject {
         ArrayList<ExcavationTool> usedTools = getSelectedExcavationTools();
         for (Relic rel : relics) {
             ArrayList<ExcavationTool> requiredTools = rel.getExcavationToolsRequirement();
-            boolean requirementsMet = false;
+            boolean requirementsMet = requiredTools.isEmpty();
             for (int i = 0; i < requiredTools.size() && !requirementsMet; i++) {
                 requirementsMet = usedTools.contains(requiredTools.get(i));
             }
