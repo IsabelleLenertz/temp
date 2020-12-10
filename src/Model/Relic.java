@@ -72,7 +72,7 @@ public class Relic {
 
     public String analyze(ArrayList<ExploitationTool> usedExploitationTools) {
         totalValue = 0;
-        String recap = "";
+        String recap = "<html>";
         if (isFound) {
             totalValue += baseValue;
             for (int i = 0; i < exploitationToolsRequirement.size(); i++) {
@@ -80,10 +80,10 @@ public class Relic {
                 if (usedExploitationTools.contains(tool)) {
                     totalValue += infoValues.get(i);
                     recap += tool.getName() + " : ";
-                    recap += relicInformation.get(i) + "\n";
+                    recap += relicInformation.get(i) + "<br>";
                 }
             }
-            if (recap.equals("")) {
+            if (recap.equals("<html>")) {
                 recap = "Aucune information pertinente n'as été trouvée.";
             }
         }
