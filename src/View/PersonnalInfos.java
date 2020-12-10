@@ -24,7 +24,7 @@ public class PersonnalInfos extends SideInfos {
     public PersonnalInfos(String name, String desc, ArrayList<String> jobs, String img) {
         super(name, desc);
         this.jobs = jobs;
-        this.image = "src/img/person.jpg";
+        this.image = img;
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
