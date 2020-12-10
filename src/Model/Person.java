@@ -1,6 +1,5 @@
 package Model;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -8,73 +7,82 @@ import java.util.ArrayList;
  */
 public class Person {
 
-    private String name;
-    private String desc;
-    private ArrayList<JobEnum> jobs;
+    private final String name;
+    private final String desc;
+    private final ArrayList<JobEnum> jobs;
     private boolean isHighlighted;
     private State status;
-    private String f;
+    private final String img;
+
+    public Person(String name, String desc, ArrayList<JobEnum> jobs, String img) {
+        this.name = name;
+        this.desc = desc;
+        this.jobs = jobs;
+        this.isHighlighted = false;
+        this.status = State.UNSELECTED;
+        this.img = img;
+    }
 
     /**
-     * Default constructor
+     *
+     * @return
      */
-    public Person() {
-    }
-
-    public Person(String name, String desc, ArrayList<JobEnum> jobs) {
-        this.name = name;
-        this.desc = desc;
-        this.jobs = jobs;
-        this.isHighlighted = false;
-        this.status = State.UNSELECTED;
-    }
-    public Person(String name, String desc) {
-        this.name = name;
-        this.desc = desc;
-        this.isHighlighted = false;
-        this.status = State.UNSELECTED;
-    }
-    public Person(String name, String desc, ArrayList<JobEnum> jobs, boolean isHighlighted, State status, String f) {
-        this.name = name;
-        this.desc = desc;
-        this.jobs = jobs;
-        this.isHighlighted = isHighlighted;
-        this.status = status;
-        this.f = f;
-    }
-
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
 
+    /**
+     *
+     * @return
+     */
     public String getDesc() {
         return desc;
     }
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<JobEnum> getJobs() {
         return jobs;
     }
 
+    /**
+     *
+     * @return
+     */
     public State getStatus() {
         return status;
     }
+
+    /**
+     *
+     * @param status
+     */
     public void setStatus(State status) {
         this.status = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getImg(){
-        return this.f;
+        return this.img;
     }
 
+    /**
+     *
+     * @param val
+     */
     public void setHighlighted(boolean val){
         this.isHighlighted = val;
     }
+
+    /**
+     * 
+     * @return
+     */
     public boolean isHighlighted() {
         return isHighlighted;
     }
