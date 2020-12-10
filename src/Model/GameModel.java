@@ -479,4 +479,25 @@ public class GameModel implements Subject {
         }
         return report;
     }
+
+    public void resetGameProgress() {
+        for (Person pers : personList) {
+            pers.setStatus(State.UNSELECTED);
+            pers.setHighlighted(false);
+        }
+        for (ExcavationTool excaTool : excavationTools) {
+            excaTool.setStatus(State.UNSELECTED);
+            excaTool.setHighligt(false);
+        }
+        for (ExploitationTool exploTool : exploitationTools) {
+            exploTool.setStatus(State.UNSELECTED);
+            exploTool.setHighlighted(false);
+        }
+        for (Relic rel : relics) {
+            rel.setFound(false);
+            rel.setHighlighted(false);
+        }
+        currentStage = 0;
+        notifyObservers();
+    }
 }

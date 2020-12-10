@@ -4,6 +4,8 @@ import Control.GameControleur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -103,6 +105,12 @@ public class ResultsView extends JPanel {
         toMainMenuButton = new JButton("Main Menu");
         toMainMenuButton.setBackground(Color.PINK);
         toMainMenuButton.setVisible(true);
+        toMainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g.backToMainMenu();
+            }
+        });
 
         gc.gridx = 1;
         gc.gridy = 2;
@@ -117,6 +125,12 @@ public class ResultsView extends JPanel {
         quitButton = new JButton("Quit");
         quitButton.setBackground(Color.GRAY);
         quitButton.setVisible(true);
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
         gc.gridx = 2;
         gc.gridy = 2;

@@ -466,4 +466,11 @@ public class GameControleur {
     public void nextStage() {
         g.nextStage();
     }
+
+    /**
+     * Return the game to the main menu
+     */
+    public void backToMainMenu() {
+        g.resetGameProgress();
+    }
 }
