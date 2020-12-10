@@ -58,4 +58,10 @@ public class TeamView extends StageView {
         this.resources().revalidate();
     }
 
+    @Override
+    public void initText() {
+        this.setText(new JLabel("<html><h1>Etape 1 : Préparation de l'opération</h1><p>Veuillez séléctionner les personnes pour l'opération."));
+        getText().setBackground(Color.CYAN);
+        getText().setOpaque(true);
+    }
 }

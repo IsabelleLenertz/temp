@@ -60,4 +60,10 @@ public class ExcavationView extends StageView {
         this.resources().revalidate();
     }
 
+    @Override
+    public void initText() {
+        this.setText(new JLabel("<html><h1>Etape 2 : Fouille du site</h1><p>Veuiller selectionner les méthodes de fouille à utiliser."));
+        getText().setBackground(Color.CYAN);
+        getText().setOpaque(true);
+    }
 }
