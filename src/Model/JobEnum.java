@@ -4,12 +4,12 @@ package Model;
  * 
  */
 public enum JobEnum {
+    personnel,
     directeur_de_chantier,
-    bénévoles,
-    étudiants_en_archéologie,
+    étudiant_en_archéologie,
+    étudiante_en_archéologie,
     géographe,
     géomaticien,
-    données_géographiques,
     céramologue,
     médiéviste,
     antiquisant,
@@ -18,5 +18,6 @@ public enum JobEnum {
     scientifique_de_laboratoire,
     conducteur_engin_de_chantier,
     archéologue,
-    géoarchéologue
+    géoarchéologue,
+    archéobotaniste
 }
