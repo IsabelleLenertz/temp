@@ -19,6 +19,14 @@ public class GameControleur {
     }
 
     /**
+     * counts the points the user has in the game (the relics need to be analysed first to award points)
+     * @return Number of points
+     */
+    public int countPoints() {
+        return g.countPoints();
+    }
+
+    /**
      * ask the model for highlight person
      * @param personName name of the person who want highlight
      */
@@ -255,6 +263,15 @@ public class GameControleur {
             }
         }
         return s;
+    }
+
+    /**
+     * asks the model to analyze and output a report for a relic
+     * @param relicName Name of the relic to analyze
+     * @return A report about what could be found about the relic
+     */
+    public String analyzeRelic(String relicName) {
+        return g.analyzeRelic(relicName);
     }
 
     /**

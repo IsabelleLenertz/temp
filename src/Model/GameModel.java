@@ -450,4 +450,33 @@ public class GameModel implements Subject {
             rel.setFound(requirementsMet);
         }
     }
+
+    public ArrayList<Relic> getFoundRelics() {
+        ArrayList<Relic> foundRelics = new ArrayList<>();
+        for (Relic rel : relics) {
+            if (rel.getFound()) {
+                foundRelics.add(rel);
+            }
+        }
+        return foundRelics;
+    }
+
+    public int countPoints() {
+        int points = 0;
+        for (Relic rel : getFoundRelics()) {
+            points += rel.getTotalValue();
+        }
+        return points;
+    }
+
+    public String analyzeRelic(String relicName) {
+        String report = null;
+        for (Relic rel : relics) {
+            if (rel.getName().equals(relicName)) {
+                report = rel.analyze(getSelectedExploitationTools());
+                break;
+            }
+        }
+        return report;
+    }
 }
