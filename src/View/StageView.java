@@ -164,6 +164,12 @@ public abstract class StageView extends JPanel implements Observer {
         toMainMenu = new JButton("Main Menu");
         toMainMenu.setBackground(Color.PINK);
         toMainMenu.setVisible(true);
+        toMainMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g.backToMainMenu();
+            }
+        });
 
         gc.gridx = 1;
         gc.gridy = 0;
