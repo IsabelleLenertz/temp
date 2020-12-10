@@ -1,5 +1,6 @@
 package Model;
 
+import View.StageView;
 import observer.Observer;
 import observer.Subject;
 
@@ -18,6 +19,14 @@ public class GameModel implements Subject {
     private final ArrayList<Observer> observers;
     private int currentStage;
 
+
+    /**
+     * Constructor for the GameModel
+     * @param relic list of relics presents in the game
+     * @param person list of the persons presents in the game
+     * @param excavationTool list of the excavation tools presents in the game
+     * @param exploitationTool list of the exploitation tools presents in the game
+     */
     public GameModel(ArrayList<Relic> relic, ArrayList<Person> person, ArrayList<ExcavationTool> excavationTool, ArrayList<ExploitationTool> exploitationTool) {
         this.relics = relic;
         this.personList = person;
@@ -27,10 +36,14 @@ public class GameModel implements Subject {
         this.currentStage = 0;
     }
 
+    /**
+     * getter for
+     * @return
+     */
     public ArrayList<Relic> getRelic() {
         return relics;
     }
-
+    
     public ArrayList<Person> getPerson() {
         return this.personList;
     }
@@ -70,7 +83,7 @@ public class GameModel implements Subject {
     public ExcavationTool getHighlightedExcavationTool() {
         ExcavationTool highlightedExcavationTool = null;
         for (ExcavationTool excavationTool : excavationTools) {
-            if (excavationTool.isHighlight()) {
+            if (excavationTool.isHighligt()) {
                 highlightedExcavationTool = excavationTool;
                 break;
             }
@@ -386,7 +399,7 @@ public class GameModel implements Subject {
         ArrayList<ExcavationTool> list = getExcavationTool();
         for (ExcavationTool e : list) {
             if (excavationToolName.equals(e.getName())) {
-                e.setHighlight(highlight);
+                e.setHighligt(highlight);
                 break;
             }
         }
@@ -417,8 +430,8 @@ public class GameModel implements Subject {
     }
 
     public void clearHighlight() {
-        ArrayList<Person> list = getPerson();
-        for (Person p : list) {
+        ArrayList<Person> listp = getPerson();
+        for (Person p : listp) {
             if (p.isHighlighted()) {
                 p.setHighlighted(false);
             }
@@ -436,5 +449,34 @@ public class GameModel implements Subject {
             }
             rel.setFound(requirementsMet);
         }
+    }
+
+    public ArrayList<Relic> getFoundRelics() {
+        ArrayList<Relic> foundRelics = new ArrayList<>();
+        for (Relic rel : relics) {
+            if (rel.getFound()) {
+                foundRelics.add(rel);
+            }
+        }
+        return foundRelics;
+    }
+
+    public int countPoints() {
+        int points = 0;
+        for (Relic rel : getFoundRelics()) {
+            points += rel.getTotalValue();
+        }
+        return points;
+    }
+
+    public String analyzeRelic(String relicName) {
+        String report = null;
+        for (Relic rel : relics) {
+            if (rel.getName().equals(relicName)) {
+                report = rel.analyze(getSelectedExploitationTools());
+                break;
+            }
+        }
+        return report;
     }
 }

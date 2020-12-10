@@ -15,7 +15,7 @@ public abstract class SideInfos extends JPanel {
      */
     public SideInfos(String name, String desc) {
         this.name = name;
-        this.desc = desc;
+        this.desc = "<html>" + desc;
         setDisplay();
     }
 

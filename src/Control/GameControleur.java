@@ -19,6 +19,14 @@ public class GameControleur {
     }
 
     /**
+     * counts the points the user has in the game (the relics need to be analysed first to award points)
+     * @return Number of points
+     */
+    public int countPoints() {
+        return g.countPoints();
+    }
+
+    /**
      * ask the model for highlight person
      * @param personName name of the person who want highlight
      */
@@ -62,9 +70,9 @@ public class GameControleur {
      * @return status of the person
      */
     public State getPersonStatus(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         State s = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 s = p.getStatus();
                 break;
@@ -74,13 +82,13 @@ public class GameControleur {
     }
 
     /**
-     * getter of person
+     * getter of person desc
      * @return description of person
      */
     public String getPersonDesc(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String s = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 s = p.getDesc();
                 break;
@@ -94,9 +102,9 @@ public class GameControleur {
      * @return image path of person
      */
     public String getPersonImage(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String f = null;
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 f = p.getImg();
                 break;
@@ -110,9 +118,9 @@ public class GameControleur {
      * @return list of person's jobs
      */
     public String getPersonJobs(String name) {
-        ArrayList<Person> list = g.getPerson();
+        ArrayList<Person> listp = g.getPerson();
         String jobs = "";
-        for (Person p : list) {
+        for (Person p : listp) {
             if (name.equals(p.getName())) {
                 jobs = p.getJobs().toString();
                 break;
@@ -258,6 +266,15 @@ public class GameControleur {
     }
 
     /**
+     * asks the model to analyze and output a report for a relic
+     * @param relicName Name of the relic to analyze
+     * @return A report about what could be found about the relic
+     */
+    public String analyzeRelic(String relicName) {
+        return g.analyzeRelic(relicName);
+    }
+
+    /**
      * getter of relic
      * @return list of person in the game
      */
@@ -316,7 +333,7 @@ public class GameControleur {
      * @return list of available jobs
      */
     public ArrayList<String> getAvailableJobs() {
-        ArrayList<String> availableJobs = new ArrayList<String>();
+        ArrayList<String> availableJobs = new ArrayList<>();
         switch (g.getCurrentStage()) {
             case 2:
                 for (JobEnum job : g.getAvailableExcavationJobs()) {
@@ -351,8 +368,8 @@ public class GameControleur {
     }
 
     /**
-     * set the status of excavation tool to SELECT
-     * @param name name of the excavation who want to select
+     * set the status of the excavation tool to SELECT
+     * @param name name of the excavation tool who want change status
      */
     public void selectExcavationTool(String name) {
         g.selectExcavationTool(name);
@@ -367,16 +384,16 @@ public class GameControleur {
     }
 
     /**
-     * set the status of excavation tool on SELECT
-     * @param name name of the excavation tool who want to select
+     * set the status of the exploitation tool to SELECT
+     * @param name name of the exploitation tool who want change status
      */
     public void selectExploitationTool(String name) {
         g.selectExploitationTool(name);
     }
 
     /**
-     * set the status of exploitation tool on SELECT
-     * @param name name of the exploitation tool who want to select
+     * set the status of the exploitation tool to UNSELECT
+     * @param name name of the exploitation tool who want change status
      */
     public void unselectExploitationTool(String name) {
         g.unselectExploitationTool(name);
@@ -390,7 +407,7 @@ public class GameControleur {
         // if there is a highlighted person
         Person highlightedPerson = g.getHighlightedPerson();
         if (highlightedPerson != null) {
-            ArrayList<String> jobs = new ArrayList<String>();
+            ArrayList<String> jobs = new ArrayList<>();
             for (JobEnum job : highlightedPerson.getJobs()) {
                 jobs.add(job.toString());
                 // TODO reformat the string to not be all capital letters
@@ -405,7 +422,7 @@ public class GameControleur {
         // if there is a highlighted excavation tool
         ExcavationTool highlightedExcavationTool = g.getHighlightedExcavationTool();
         if (highlightedExcavationTool != null) {
-            ArrayList<String> jobs = new ArrayList<String>();
+            ArrayList<String> jobs = new ArrayList<>();
             for (JobEnum job : highlightedExcavationTool.getRequirements()) {
                 jobs.add(job.toString());
                 // TODO reformat the string to not be all capital letters
@@ -414,8 +431,8 @@ public class GameControleur {
         }
         // if there is a highlighted exploitation tool
         ExploitationTool highlightedExploitationTool = g.getHighlightedExploitationTool();
-        if (highlightedExploitationTool!= null) {
-            ArrayList<String> jobs = new ArrayList<String>();
+        if (highlightedExploitationTool != null) {
+            ArrayList<String> jobs = new ArrayList<>();
             for (JobEnum job : highlightedExploitationTool.getRequirement()) {
                 jobs.add(job.toString());
                 // TODO reformat the string to not be all capital letters

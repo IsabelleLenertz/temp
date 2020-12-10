@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class ExcavationTool {
 
-    private String name;
+    private final String name;
     private final String desc;
     private final ArrayList<JobEnum> requirements;
     private boolean isHighlight;
@@ -17,7 +17,7 @@ public class ExcavationTool {
      * constructor for the excavation tool
      * @param name name of the excavation tool
      * @param desc description of the excavation tool
-     * @param requirements job who require for used the relics
+     * @param requirements list of jobs who are required for used this excavation tool
      */
     public ExcavationTool(String name, String desc, ArrayList<JobEnum> requirements) {
         this.name = name;
@@ -28,7 +28,7 @@ public class ExcavationTool {
     }
 
     /**
-     * getter for the excavation name
+     * getter for the excavation tool's name
      * @return name of the excavation tool
      */
     public String getName() {
@@ -36,57 +36,48 @@ public class ExcavationTool {
     }
 
     /**
-     * setter for the excavation name
-     * @param name new name of the excavation tool
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * getter for the description of the excavation tool
-     * @return the description of the exaction tool
+     * getter for the excavation tool's description
+     * @return description of the excavation tool
      */
     public String getDesc() {
         return desc;
     }
 
     /**
-     * getter for the requirement of the excavation tool
-     * @return list of the jobs who is required for this excavation tool
+     * getter for the excavation tool's jobs requirements
+     * @return list of the jobs required for used this excavation tool
      */
     public ArrayList<JobEnum> getRequirements() {
         return requirements;
     }
 
     /**
-     * check if the excavation tool is highlighted or not
-     * @return the status of the excavation tool
+     * getter for know the highlight status
+     * @return the highlight status, true or false
      */
-    public boolean isHighlight() {
+    public boolean isHighligt() {
         return isHighlight;
     }
 
     /**
-     * set the highlighted variable on true or false
-     * @param highlight the value that the isHighlighted variable should take
+     * set the highlight status
+     * @param highlight status that the isHighlight value should have
      */
-    public void setHighlight(boolean highlight) {
+    public void setHighligt(boolean highlight) {
         isHighlight = highlight;
     }
 
     /**
-     * getter for the status of the excavation tool
-     * @return the state who is the excvation tool (SELECTED,UNSELECTED,UNAVAILABLE)
+     * getter for the excavation tool's status
+     * @return the status of the excavation tool (SELECT, UNSELECT,UNAVAILABLE)
      */
     public State getStatus() {
         return status;
     }
 
     /**
-     * set the status of the excavation tool
-     * @param status the status that must be taken by the excavqtion tool
-     *               (SELECTED,UNSELECTED,UNAVAILABLE)
+     * setter for the excavation tool's status
+     * @param status make the status on one of these 3 possibilities : SELECT, UNSELECT,UNAVAILABLE
      */
     public void setStatus(State status) {
         this.status = status;
