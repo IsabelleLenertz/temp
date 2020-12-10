@@ -26,14 +26,17 @@ public class PersonnalInfos extends SideInfos {
         this.jobs = jobs;
         this.image = img;
 
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gc.fill = GridBagConstraints.BOTH;
+
         int i = 3;
 
         for(String job : jobs)
         {
             i++;
         }
-
-        this.setLayout(new GridLayout(i, 0));
 
         /*BufferedImage image = null;
         try{
@@ -50,14 +53,20 @@ public class PersonnalInfos extends SideInfos {
         JLabel personnalDesc = new JLabel(this.getDesc());
         personnalDesc.setVisible(true);
 
-        //this.add(labelImg);
-        this.add(personnalName);
-        this.add(personnalDesc);
+        gc.gridx = 0;
+        gc.gridy = 0;
+        //this.add(labelImg, gc);
+
+        gc.gridy = 1;
+        this.add(personnalName, gc);
+        gc.gridy = 2;
+        this.add(personnalDesc, gc);
 
         for(String job : jobs)
         {
+            gc.gridy++;
             JLabel competence = new JLabel(job);
-            this.add(competence);
+            this.add(competence, gc);
         }
     }
     /**
