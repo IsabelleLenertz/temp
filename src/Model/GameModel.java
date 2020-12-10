@@ -337,13 +337,15 @@ public class GameModel implements Subject {
     }
 
     private void checkExcavationResources() {
-        ArrayList<JobEnum> availableJobs = getAvailableExcavationJobs();
         for (ExcavationTool tool : excavationTools) {
+            ArrayList<JobEnum> availableJobs = getAvailableExcavationJobs();
             if (tool.getStatus() == State.UNSELECTED) {
                 boolean requirementMet = true;
                 ArrayList<JobEnum> requiredJobs = tool.getRequirements();
                 for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
                     requirementMet = availableJobs.contains(requiredJobs.get(i));
+                    if (requirementMet)
+                        availableJobs.remove(requiredJobs.get(i));
                 }
                 if (!requirementMet)
                     tool.setStatus(State.UNAVAILABLE);
@@ -353,6 +355,8 @@ public class GameModel implements Subject {
                 ArrayList<JobEnum> requiredJobs = tool.getRequirements();
                 for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
                     requirementMet = availableJobs.contains(requiredJobs.get(i));
+                    if (requirementMet)
+                        availableJobs.remove(requiredJobs.get(i));
                 }
                 if (requirementMet)
                     tool.setStatus(State.UNSELECTED);
@@ -361,13 +365,15 @@ public class GameModel implements Subject {
     }
 
     private void checkExploitationResources() {
-        ArrayList<JobEnum> availableJobs = getAvailableExploitationJobs();
         for (ExploitationTool tool : exploitationTools) {
+            ArrayList<JobEnum> availableJobs = getAvailableExploitationJobs();
             if (tool.getStatus() == State.UNSELECTED) {
                 boolean requirementMet = true;
                 ArrayList<JobEnum> requiredJobs = tool.getRequirement();
                 for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
                     requirementMet = availableJobs.contains(requiredJobs.get(i));
+                    if (requirementMet)
+                        availableJobs.remove(requiredJobs.get(i));
                 }
                 if (!requirementMet)
                     tool.setStatus(State.UNAVAILABLE);
@@ -377,6 +383,8 @@ public class GameModel implements Subject {
                 ArrayList<JobEnum> requiredJobs = tool.getRequirement();
                 for (int i = 0; i < requiredJobs.size() && requirementMet; i++) {
                     requirementMet = availableJobs.contains(requiredJobs.get(i));
+                    if (requirementMet)
+                        availableJobs.remove(requiredJobs.get(i));
                 }
                 if (requirementMet)
                     tool.setStatus(State.UNSELECTED);
