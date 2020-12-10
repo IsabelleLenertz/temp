@@ -122,6 +122,7 @@ public abstract class StageView extends JPanel implements Observer {
             gc.fill = GridBagConstraints.BOTH;
         }
         sideInfos.setPreferredSize(sideInfos.getSize());
+        sideInfos.setLayout(new BorderLayout());
         return  sideInfos;
     }
 
@@ -198,7 +199,13 @@ public abstract class StageView extends JPanel implements Observer {
 
         if(side != null)
         {
-            sideInfos.add(side);
+            gc.gridx = 0;
+            gc.gridy = 0;
+            gc.weightx = 1;
+            gc.weighty = 1;
+            gc.anchor = GridBagConstraints.FIRST_LINE_START;
+            gc.fill = GridBagConstraints.BOTH;
+            sideInfos.add(side, BorderLayout.CENTER);
         }
 
         setResourceRestantes();
